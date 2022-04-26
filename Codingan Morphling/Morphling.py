@@ -1,6 +1,6 @@
 from abc import abstractmethod
 import pygame
-import random
+import random #library random
 
 pygame.init()
 
