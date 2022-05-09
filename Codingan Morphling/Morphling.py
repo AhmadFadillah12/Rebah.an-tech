@@ -2,6 +2,8 @@ from abc import abstractmethod
 import pygame
 import random
 
+from Gambar import *
+
 pygame.init()
 
 #Membuat screen, title, dan icon
