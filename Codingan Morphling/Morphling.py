@@ -10,54 +10,54 @@ height = 836
 screen = pygame.display.set_mode((width,height))
 font = pygame.font.Font('freesansbold.ttf',20)
 pygame.display.set_caption ("Morphling")
-icon = pygame.image.load ('Gambarrr/pterodactyl.png')
+icon = pygame.image.load ('Codingan Morphling/Gambarrr/pterodactyl.png')
 pygame.display.set_icon(icon)
-background = pygame.image.load('Gambarrr/background.png')
+background = pygame.image.load('Codingan Morphling/Gambarrr/background.png')
 background = pygame.transform.scale(background,(width,height))
-background_menu = pygame.image.load('Gambarrr/menu_start.png')
+background_menu = pygame.image.load('Codingan Morphling/Gambarrr/menu_start.png')
 background_menu = pygame.transform.scale(background_menu,(950,836)) 
-pipa = pygame.image.load('Gambarrr/Pipa/pipa 1.png')
+pipa = pygame.image.load('Codingan Morphling/Gambarrr/Pipa/pipa 1.png')
 pipa = pygame.transform.scale(pipa, (80, 400))
-pipaatas = pygame.image.load('Gambarrr/Pipa/pipa 2.png')
+pipaatas = pygame.image.load('Codingan Morphling/Gambarrr/Pipa/pipa 2.png')
 pipaatas = pygame.transform.scale(pipaatas, (110, 400))
 
 
 #sementara code gambar di satukan sama code gamenya sebelum dipisah setelah fix gambarnya
-Gambar_Dino_Awal   =    pygame.image.load('Gambarrr/dino_idle.png')
-Gambar_Dino_Nunduk =   [pygame.image.load('Gambarrr/Dino/Dino Mati/Dead (2).png'),
-                        pygame.image.load('Gambarrr/Dino/Dino Mati/Dead (3).png')] # sementara
+Gambar_Dino_Awal   =    pygame.image.load('Codingan Morphling/Gambarrr/dino_idle.png')
+Gambar_Dino_Nunduk =   [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Mati/Dead (2).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Mati/Dead (3).png')] # sementara
 
-Gambar_Dino_Lari   =   [pygame.image.load('Gambarrr/Dino/Dino Lari/Run (1).png'),
-                        pygame.image.load('Gambarrr/Dino/Dino Lari/Run (2).png'),
-                        pygame.image.load('Gambarrr/Dino/Dino Lari/Run (3).png'),
-                        pygame.image.load('Gambarrr/Dino/Dino Lari/Run (4).png'),
-                        pygame.image.load('Gambarrr/Dino/Dino Lari/Run (5).png'),
-                        pygame.image.load('Gambarrr/Dino/Dino Lari/Run (6).png'),
-                        pygame.image.load('Gambarrr/Dino/Dino Lari/Run (7).png'),
-                        pygame.image.load('Gambarrr/Dino/Dino Lari/Run (8).png')]
+Gambar_Dino_Lari   =   [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (1).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (2).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (3).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (4).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (5).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (6).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (7).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (8).png')]
 
-Gambar_Dino_Melompat = [pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (1).png'),
-                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (2).png'),
-                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (3).png'),
-                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (4).png'),
-                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (5).png'),
-                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (6).png'),
-                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (7).png'),
-                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (8).png'),
-                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (9).png'),
-                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (10).png'),
-                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (11).png'),
-                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (12).png')]
+Gambar_Dino_Melompat = [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lompat/Jump (1).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lompat/Jump (2).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lompat/Jump (3).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lompat/Jump (4).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lompat/Jump (5).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lompat/Jump (6).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lompat/Jump (7).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lompat/Jump (8).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lompat/Jump (9).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lompat/Jump (10).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lompat/Jump (11).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lompat/Jump (12).png')]
 
-Gambar_Obstacle_Batu = [pygame.image.load('Gambarrr/Batu/Crystal2.png'),
-                        pygame.image.load('Gambarrr/Batu/Crystal4.png')]
+Gambar_Obstacle_Batu = [pygame.image.load('Codingan Morphling/Gambarrr/Batu/Crystal2.png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Batu/Crystal4.png')]
 
 Gambar_Obstacle_Batu[0] = pygame.transform.scale(Gambar_Obstacle_Batu[0],(90,100))
 Gambar_Obstacle_Batu[1] = pygame.transform.scale(Gambar_Obstacle_Batu[1],(90,100))
-pohon = pygame.image.load('Gambarrr/Pohon/7.png')
+pohon = pygame.image.load('Codingan Morphling/Gambarrr/Pohon/7.png')
 pohon = pygame.transform.scale(pohon, (90, 150))
-bird = pygame.image.load('Gambarrr/seagull.png')
-pohonbesar = pygame.image.load('Gambarrr/Pohon/1.png')
+bird = pygame.image.load('Codingan Morphling/Gambarrr/seagull.png')
+pohonbesar = pygame.image.load('Codingan Morphling/Gambarrr/Pohon/1.png')
 pohonbesar = pygame.transform.scale(pohonbesar, (130, 130))
 
 class Karakter ():
@@ -101,7 +101,7 @@ class Dino (Karakter):
 
     def melompat (self):
         if self.lompat is True:
-            # pygame.mixer.music.load('Gambarrr/sound_lompat.mp3') 
+            # pygame.mixer.music.load('Codingan Morphling/Gambarrr/sound_lompat.mp3') 
             # pygame.mixer.music.play()
             self.image = self.dino_lompat[self.index % 12]
             self.gojo_rect.y -= self.gojo_vel * 5
@@ -147,7 +147,7 @@ class BurungTerbang(Karakter):
     def __init__(self):
         self.x = 100
         self.y = 936 // 2
-        self.image = pygame.image.load('Gambarrr/Ptero/pterodactyl.png')
+        self.image = pygame.image.load('Codingan Morphling/Gambarrr/Ptero/pterodactyl.png')
         self.image = pygame.transform.scale(self.image, (95, 95))
         self.rect = self.image.get_rect()
         self.rect.center = [self.x,self.y]
@@ -264,7 +264,7 @@ class Pipa(Obstacle_pipa):
     def __init__(self,image,posisi):
         self.image = image
         self.rect = self.image.get_rect()
-        x = random.randint()
+        # x = random.randint()
         if posisi == 1: 
             self.rect.bottomleft = (885,950)
         if posisi == -1:
@@ -285,7 +285,7 @@ class Score:
 
     def high_score():
         high_score = 0
-        high_score_file = open("high_score.txt", "r")
+        high_score_file = open("Codingan Morphling/high_score.txt", "r")
         high_score = int(high_score_file.read())
         high_score_file.close()
         return high_score
@@ -320,13 +320,13 @@ class Button:
         screen.blit(self.image,(self.rect.x , self.rect.y))
         return action
 
-button_start = pygame.image.load('Gambarrr/button_start.png')
+button_start = pygame.image.load('Codingan Morphling/Gambarrr/button_start.png')
 start_button = Button(480,500,button_start,0.9)
-button_end = pygame.image.load('Gambarrr/exitt.png')
+button_end = pygame.image.load('Codingan Morphling/Gambarrr/exitt.png')
 end_button = Button(480,620,button_end,0.9)
-game_dino = pygame.image.load('Gambarrr/Dino/Dino idle/idle (1).png')
+game_dino = pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino idle/idle (1).png')
 dino_game = Button(715,395,game_dino,1)
-game_ptero = pygame.image.load('Gambarrr/Ptero/pterodactyl.png')
+game_ptero = pygame.image.load('Codingan Morphling/Gambarrr/Ptero/pterodactyl.png')
 ptero_game = Button(190,100,game_ptero,0.9)
 
 def start (nilai):
