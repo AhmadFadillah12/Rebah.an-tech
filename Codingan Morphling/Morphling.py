@@ -56,6 +56,10 @@ Gambar_Dino_Melompat = [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino
 Gambar_Obstacle_Batu = [pygame.image.load('Codingan Morphling/Gambarrr/Batu/Crystal2.png'),
                         pygame.image.load('Codingan Morphling/Gambarrr/Batu/Crystal4.png')]
 
+Gambar_Ptero = [pygame.image.load('Codingan Morphling/Gambarrr/Ptero/pterodactyl.png'),
+                pygame.image.load('Codingan Morphling/Gambarrr/Ptero/pterodactyl2.png'),
+                pygame.image.load('Codingan Morphling/Gambarrr/Ptero/pterodactyl3.png'),
+                pygame.image.load('Codingan Morphling/Gambarrr/Ptero/pterodactyl4.png')]
 
 
 Gambar_Obstacle_Batu[0] = pygame.transform.scale(Gambar_Obstacle_Batu[0],(90,90))
@@ -161,15 +165,28 @@ class BurungTerbang(Karakter):
         #tambahin animasi wing flapping 
         self.vel = 0
         self.terbangg = False  
+        self.flap = True
+        self.ptero_flapping = Gambar_Ptero
+        self.index = 0
 
     def terbang (self):
         if self.terbangg == True:
             self.vel = -15
             self.terbangg = False
 
+    def bergerak (self):
+        if self.flap == True:
+            self.image = self.ptero_flapping[self.index % 4]
+            self.index += 1
+
     def update (self,user_input):
-        global TERBANG,game_over
+        if self.index > 5:
+            self.index = 0
+        global TERBANG
         #gravity
+        if self.flap is True:
+            self.bergerak()
+
         if TERBANG == True:
             self.vel += 3
             if self.vel > 10:
@@ -177,18 +194,12 @@ class BurungTerbang(Karakter):
             if self.rect.bottom < 936:
                 self.rect.y += self.vel
             if self.rect.top < 0:
-                self.rect.top = 0
-
-            
+                self.rect.top = 0 
         #jump
         if self.terbangg is False and user_input[pygame.K_SPACE]:
             self.terbangg = True
             self.terbang()
-        
-        
-            
-    def bergerak (self):
-        pass
+    
     def draw(self,screen):
         screen.blit(self.image,(self.rect.x,self.rect.y))
 		
@@ -384,7 +395,7 @@ def start (nilai):
                 pygame.quit()
                 exit()
 
-background_select = pygame.image.load('Codingan Morphling/Gambarrr/Background/character_select.png')
+background_select = pygame.image.load('Codingan Morphling/Gambarrr/Background/character_select.jpeg')
 background_select = pygame.transform.scale(background_select,(950,836))
 
 def pilih_karakter():
