@@ -27,6 +27,7 @@ background_ptero = pygame.transform.scale(background_ptero,(875,936))
 
 #sementara code gambar di satukan sama code gamenya sebelum dipisah setelah fix gambarnya
 Gambar_Dino_Awal   =    pygame.image.load('Codingan Morphling/Gambarrr/dino_idle.png')
+
 Gambar_Dino_Nunduk =   [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Nunduk/Proses Nunduk1.png'),
                         pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Nunduk/Proses Nunduk2.png'),
                         pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Nunduk/Proses Nunduk3.png'),
@@ -58,10 +59,14 @@ Gambar_Dino_Melompat = [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino
 Gambar_Obstacle_Batu = [pygame.image.load('Codingan Morphling/Gambarrr/Batu/Crystal2.png'),
                         pygame.image.load('Codingan Morphling/Gambarrr/Batu/Crystal4.png')]
 
-Gambar_Ptero = [pygame.image.load('Codingan Morphling/Gambarrr/Ptero/pterodactyl.png'),
-                pygame.image.load('Codingan Morphling/Gambarrr/Ptero/pterodactyl2.png'),
-                pygame.image.load('Codingan Morphling/Gambarrr/Ptero/pterodactyl3.png'),
-                pygame.image.load('Codingan Morphling/Gambarrr/Ptero/pterodactyl4.png')]
+Gambar_Ptero = [pygame.image.load('Codingan Morphling/Gambarrr/Ptero/Pterodactyl1.png'),
+                pygame.image.load('Codingan Morphling/Gambarrr/Ptero/Pterodactyl2.png'),
+                pygame.image.load('Codingan Morphling/Gambarrr/Ptero/Pterodactyl3.png'),
+                pygame.image.load('Codingan Morphling/Gambarrr/Ptero/Pterodactyl4.png'),
+                pygame.image.load('Codingan Morphling/Gambarrr/Ptero/Pterodactyl5.png'),
+                pygame.image.load('Codingan Morphling/Gambarrr/Ptero/Pterodactyl6.png'),
+                pygame.image.load('Codingan Morphling/Gambarrr/Ptero/Pterodactyl7.png'),
+                pygame.image.load('Codingan Morphling/Gambarrr/Ptero/Pterodactyl8.png'),]
 
 
 Gambar_Obstacle_Batu[0] = pygame.transform.scale(Gambar_Obstacle_Batu[0],(90,90))
@@ -159,8 +164,7 @@ class BurungTerbang(Karakter):
     def __init__(self):
         self.x = 100
         self.y = 936 // 2
-        self.image = pygame.image.load('Codingan Morphling/Gambarrr/Ptero/pterodactyl.png')
-        self.image = pygame.transform.scale(self.image, (85, 85))
+        self.image = Gambar_Ptero[0]
         self.rect = self.image.get_rect()
         self.ptero_rect = self.rect
         self.ptero_rect.center = [self.x,self.y]
@@ -178,7 +182,7 @@ class BurungTerbang(Karakter):
 
     def bergerak (self):
         if self.flap == True:
-            self.image = self.ptero_flapping[self.index % 4]
+            self.image = self.ptero_flapping[self.index % 8]
             self.index += 1
 
     def update (self,user_input):
@@ -361,8 +365,8 @@ end_button = Button(480,600,button_end,0.9)
 game_dino = pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino idle/idle (1).png')
 game_dino = pygame.transform.scale(game_dino,(150,150))
 dino_game = Button(715,395,game_dino,1.15)
-game_ptero = pygame.image.load('Codingan Morphling/Gambarrr/Ptero/pterodactyl.png')
-ptero_game = Button(200,400,game_ptero,0.9)
+game_ptero = pygame.image.load('Codingan Morphling/Gambarrr/pteroicon.png')
+ptero_game = Button(200,400,game_ptero,1.5)
 gameover_button = pygame.image.load('Codingan Morphling/Gambarrr/Background/PlayAgain.png')
 button_gameover = Button(480,600,gameover_button,0.20)
 
