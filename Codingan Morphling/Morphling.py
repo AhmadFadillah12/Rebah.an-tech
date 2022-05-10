@@ -2,12 +2,10 @@ from abc import abstractmethod
 import pygame
 import random
 
-from Gambar import *
-
 pygame.init()
 
 #Membuat screen, title, dan icon
-width = 950
+width = 1100
 height = 836
 screen = pygame.display.set_mode((width,height))
 font = pygame.font.Font('freesansbold.ttf',20)
@@ -15,14 +13,49 @@ pygame.display.set_caption ("Morphling")
 icon = pygame.image.load ('Gambarrr/pterodactyl.png')
 pygame.display.set_icon(icon)
 background = pygame.image.load('Gambarrr/background.png')
-background = pygame.transform.scale(background,(950,836))
+background = pygame.transform.scale(background,(width,height))
 background_menu = pygame.image.load('Gambarrr/menu_start.png')
-background_menu = pygame.transform.scale(background_menu,(950,836))
+background_menu = pygame.transform.scale(background_menu,(950,836)) 
+pipa = pygame.image.load('Gambarrr/Pipa/pipa 1.png')
+pipa = pygame.transform.scale(pipa, (80, 400))
+pipaatas = pygame.image.load('Gambarrr/Pipa/pipa 2.png')
+pipaatas = pygame.transform.scale(pipaatas, (110, 400))
 
-Gambar_Obstacle_Batu[0] = pygame.transform.scale(Gambar_Obstacle_Batu[0],(100,100))
-Gambar_Obstacle_Batu[1] = pygame.transform.scale(Gambar_Obstacle_Batu[1],(100,100))
+
+#sementara code gambar di satukan sama code gamenya sebelum dipisah setelah fix gambarnya
+Gambar_Dino_Awal   =    pygame.image.load('Gambarrr/dino_idle.png')
+Gambar_Dino_Nunduk =   [pygame.image.load('Gambarrr/Dino/Dino Mati/Dead (2).png'),
+                        pygame.image.load('Gambarrr/Dino/Dino Mati/Dead (3).png')] # sementara
+
+Gambar_Dino_Lari   =   [pygame.image.load('Gambarrr/Dino/Dino Lari/Run (1).png'),
+                        pygame.image.load('Gambarrr/Dino/Dino Lari/Run (2).png'),
+                        pygame.image.load('Gambarrr/Dino/Dino Lari/Run (3).png'),
+                        pygame.image.load('Gambarrr/Dino/Dino Lari/Run (4).png'),
+                        pygame.image.load('Gambarrr/Dino/Dino Lari/Run (5).png'),
+                        pygame.image.load('Gambarrr/Dino/Dino Lari/Run (6).png'),
+                        pygame.image.load('Gambarrr/Dino/Dino Lari/Run (7).png'),
+                        pygame.image.load('Gambarrr/Dino/Dino Lari/Run (8).png')]
+
+Gambar_Dino_Melompat = [pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (1).png'),
+                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (2).png'),
+                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (3).png'),
+                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (4).png'),
+                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (5).png'),
+                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (6).png'),
+                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (7).png'),
+                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (8).png'),
+                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (9).png'),
+                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (10).png'),
+                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (11).png'),
+                        pygame.image.load('Gambarrr/Dino/Dino Lompat/Jump (12).png')]
+
+Gambar_Obstacle_Batu = [pygame.image.load('Gambarrr/Batu/Crystal2.png'),
+                        pygame.image.load('Gambarrr/Batu/Crystal4.png')]
+
+Gambar_Obstacle_Batu[0] = pygame.transform.scale(Gambar_Obstacle_Batu[0],(90,100))
+Gambar_Obstacle_Batu[1] = pygame.transform.scale(Gambar_Obstacle_Batu[1],(90,100))
 pohon = pygame.image.load('Gambarrr/Pohon/7.png')
-pohon = pygame.transform.scale(pohon, (100, 150))
+pohon = pygame.transform.scale(pohon, (90, 150))
 bird = pygame.image.load('Gambarrr/seagull.png')
 pohonbesar = pygame.image.load('Gambarrr/Pohon/1.png')
 pohonbesar = pygame.transform.scale(pohonbesar, (130, 130))
@@ -97,8 +130,7 @@ class Dino (Karakter):
             self.menunduk()
         elif self.lari   is True:
             self.bergerak()
-        
-        
+    
         if (self.lompat is False and user_input[pygame.K_UP] ) or (self.lompat is False and user_input[pygame.K_SPACE]) :
             self.lompat = True
             self.nunduk = False
@@ -112,14 +144,43 @@ class Dino (Karakter):
 
 
 class BurungTerbang(Karakter):
-	def terbang (self):
-		pass
-	def update (self):
-		pass
-	def bergerak (self):
-		pass
-	def draw(self):
-		pass
+    def __init__(self):
+        self.x = 100
+        self.y = 936 // 2
+        self.image = pygame.image.load('Gambarrr/Ptero/pterodactyl.png')
+        self.image = pygame.transform.scale(self.image, (95, 95))
+        self.rect = self.image.get_rect()
+        self.rect.center = [self.x,self.y]
+        #tambahin animasi wing flapping 
+        self.vel = 0
+        self.terbangg = False  
+
+    def terbang (self):
+        if self.terbangg == True:
+            self.vel = -20
+            self.terbangg = False
+
+    def update (self,user_input):
+        global TERBANG,game_over
+        #gravity
+        if TERBANG == True:
+            self.vel += 3
+            if self.vel > 10:
+                self.vel = 10
+            if self.rect.bottom < 936:
+                self.rect.y += self.vel
+            
+        #jump
+        if self.terbangg is False and user_input[pygame.K_SPACE]:
+            self.terbangg = True
+            self.terbang()
+        
+        
+            
+    def bergerak (self):
+        pass
+    def draw(self,screen):
+        screen.blit(self.image,(self.rect.x,self.rect.y))
 		
 class Obstacle:
     def update(self):
@@ -141,7 +202,7 @@ class Obstacle:
             elif x == 2:
                 obstacles.append(Bird(bird))
             elif x == 3:
-                obstacles.append(PohonBesar(pohonbesar))
+                obstacles.append(Pohon(pohon))
 
     def buat_rintangan (self):
         for rintangan in obstacles:
@@ -179,16 +240,42 @@ class Bird(Obstacle):
         self.rect.x = width
         self.rect.y = random.randint(480,500)
 
-class Pipa(Obstacle):
-    def update():
-        pass
+class Obstacle_pipa ():
+    def update(self):
+        self.rect.x -= speed
+        if self.rect.x < -self.rect.width:
+            obstacles.pop()
+            obstacles.pop()
+    
+    def ganti_rintangan(self):
+        if obstacles == []: 
+            obstacles.append(Pipa(pipa,1))
+            obstacles.append(Pipa(pipaatas,-1))
+    
+    def buat_rintangan(self):
+        for rintangan in obstacles:
+            rintangan.draw(screen)
+            rintangan.update()
+
+    def draw(self, screen):
+        screen.blit(self.image, self.rect)
+
+class Pipa(Obstacle_pipa):
+    def __init__(self,image,posisi):
+        self.image = image
+        self.rect = self.image.get_rect()
+        x = random.randint()
+        if posisi == 1: 
+            self.rect.bottomleft = (885,950)
+        if posisi == -1:
+            self.rect.topleft = (850,0)
 
 class Score:
     def hitung_score(self):
         global poin, speed
         poin+=1
         if poin % 150 == 0:
-            speed +=1
+            speed += 0.5
 
         text = font.render("Score: " + str(poin), True, (0, 0, 0))
         textRect = text.get_rect()
@@ -237,13 +324,19 @@ button_start = pygame.image.load('Gambarrr/button_start.png')
 start_button = Button(480,500,button_start,0.9)
 button_end = pygame.image.load('Gambarrr/exitt.png')
 end_button = Button(480,620,button_end,0.9)
+game_dino = pygame.image.load('Gambarrr/Dino/Dino idle/idle (1).png')
+dino_game = Button(715,395,game_dino,1)
+game_ptero = pygame.image.load('Gambarrr/Ptero/pterodactyl.png')
+ptero_game = Button(190,100,game_ptero,0.9)
+
 def start (nilai):
     running = True
     while running: 
+        pygame.display.set_mode((950,836))
         screen.fill((255,255,255))
         screen.blit(background_menu,(0,0))
         if start_button.draw():
-            game()
+            pilih_karakter()
         if end_button.draw():
             running = False
             pygame.quit()
@@ -264,9 +357,28 @@ def start (nilai):
                 running = False
                 pygame.quit()
                 exit()
-    
-def game ():
-    global poin, speed,obstacles,death,player1
+
+def pilih_karakter():
+    running = True
+    while running: 
+        screen.fill((255,255,255))
+        screen.blit(background_menu,(0,0))
+
+        if dino_game.draw():
+            game_dino()
+        if ptero_game.draw():
+            game_ptero()
+        
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+                pygame.quit()
+                exit()
+
+def game_dino ():
+    pygame.display.set_mode((width,height))
+    global poin, speed ,obstacles,death,player1
     player1 = Dino()
     running = True 
     i = 0
@@ -298,9 +410,70 @@ def game ():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+                pygame.quit()
+                exit()
 
-        clock.tick(30)
+        clock.tick(25)
         score.hitung_score()
         pygame.display.update()
 
+ 
+TERBANG = False
+game_over = False
+
+def game_ptero ():
+    global TERBANG, poin ,speed,game_over,pipa,obstacles
+    game_over = False
+    running = True
+    speed = 10
+    poin = 0
+    score = Score()
+    clock = pygame.time.Clock()
+    obstacles = []
+    i = 0
+    width = 870
+    height = 936
+    player = BurungTerbang()
+    # pipabawah = Pipa(pipa,1)
+    # pipa_atas = Pipa(pipaatas,-1)
+    obstacle = Obstacle_pipa()
+    pygame.display.set_mode((width,height))
+
+    while running: 
+        if game_over == False: 
+            screen.fill((255,255,255))
+            screen.blit(background, (i,0))
+            screen.blit(background, (width+i,0))
+            if i <= -width:
+                screen.blit(background, (width+i,0))
+                i = 0
+            i -= speed
+
+            player.draw(screen)
+            obstacle.ganti_rintangan()
+            obstacle.buat_rintangan()
+            user_input = pygame.key.get_pressed()
+            player.update(user_input)
+            
+            if player.rect.bottom > 936:
+                game_over = True
+                TERBANG = False
+
+            score.hitung_score()
+            clock.tick(30)
+            pygame.display.update()
+            
+        else: 
+            start(0)
+
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN and TERBANG == False and game_over == False:
+                TERBANG = True
+
+            if event.type == pygame.QUIT:
+                running = False
+                pygame.quit()
+                exit()
+
+        
 start(0)
