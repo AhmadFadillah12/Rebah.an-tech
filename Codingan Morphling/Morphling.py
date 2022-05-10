@@ -380,6 +380,8 @@ game_ptero = pygame.image.load('Codingan Morphling/Gambarrr/pteroicon.png')
 ptero_game = Button(200,400,game_ptero,1.5)
 gameover_button = pygame.image.load('Codingan Morphling/Gambarrr/Background/PlayAgain.png')
 button_gameover = Button(480,600,gameover_button,0.20)
+gameover_button_exit = pygame.image.load('Codingan Morphling/Gambarrr/Background/button_exit.png')
+button_gameover_exit = Button(480,680,gameover_button_exit,1.2)
 
 
 gameover = pygame.image.load('Codingan Morphling/Gambarrr/Background/gameover_dino.png')
@@ -419,6 +421,10 @@ def start (nilai):
             screen.blit(gameover,(0,0))
             if button_gameover.draw():
                 pilih_karakter()
+            if button_gameover_exit.draw():
+                running = False
+                pygame.quit()
+                exit()
             score = font.render("Your Score: " + str(nilai), True, (0, 0, 0))
             scoreRect = score.get_rect()
             scoreRect.center = (470, 250+ 20)
@@ -444,6 +450,10 @@ def start_ptero(nilai):
         screen.blit(gameover_ptero,(0,0))
         if button_gameover.draw():
             pilih_karakter()
+        if button_gameover_exit.draw():
+            running = False
+            pygame.quit()
+            exit()
         score = font.render("Your Score: " + str(nilai), True, (0, 0, 0))
         scoreRect = score.get_rect()
         scoreRect.center = (470, 250+ 20)
