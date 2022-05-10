@@ -18,14 +18,19 @@ background_menu = pygame.image.load('Codingan Morphling/Gambarrr/menu_start.png'
 background_menu = pygame.transform.scale(background_menu,(950,836)) 
 pipa = pygame.image.load('Codingan Morphling/Gambarrr/Pipa/pipa 1.png')
 pipa = pygame.transform.scale(pipa, (80, 380))
+pipa = pygame.transform.flip(pipa, False, True)
 pipaatas = pygame.image.load('Codingan Morphling/Gambarrr/Pipa/pipa 2.png')
 pipaatas = pygame.transform.scale(pipaatas, (110, 380))
+background_ptero = pygame.image.load('Codingan Morphling/Gambarrr/FinalNight1.png')
+background_ptero = pygame.transform.scale(background_ptero,(875,936))
 
 
 #sementara code gambar di satukan sama code gamenya sebelum dipisah setelah fix gambarnya
 Gambar_Dino_Awal   =    pygame.image.load('Codingan Morphling/Gambarrr/dino_idle.png')
 Gambar_Dino_Nunduk =   [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Mati/Dead (2).png'),
                         pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Mati/Dead (3).png')] # sementara
+
+
 
 Gambar_Dino_Lari   =   [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (1).png'),
                         pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (2).png'),
@@ -35,6 +40,9 @@ Gambar_Dino_Lari   =   [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino
                         pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (6).png'),
                         pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (7).png'),
                         pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (8).png')]
+
+
+
 
 Gambar_Dino_Melompat = [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lompat/Jump (1).png'),
                         pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lompat/Jump (2).png'),
@@ -150,7 +158,8 @@ class BurungTerbang(Karakter):
         self.image = pygame.image.load('Codingan Morphling/Gambarrr/Ptero/pterodactyl.png')
         self.image = pygame.transform.scale(self.image, (85, 85))
         self.rect = self.image.get_rect()
-        self.rect.center = [self.x,self.y]
+        self.ptero_rect = self.rect
+        self.ptero_rect.center = [self.x,self.y]
         #tambahin animasi wing flapping 
         self.vel = 0
         self.terbangg = False  
@@ -169,6 +178,9 @@ class BurungTerbang(Karakter):
                 self.vel = 10
             if self.rect.bottom < 936:
                 self.rect.y += self.vel
+            if self.rect.top < 0:
+                self.rect.top = 0
+
             
         #jump
         if self.terbangg is False and user_input[pygame.K_SPACE]:
@@ -256,6 +268,8 @@ class Obstacle_pipa ():
         for rintangan in obstacles:
             rintangan.draw(screen)
             rintangan.update()
+            if player.ptero_rect.colliderect(rintangan.rect):
+                start(Score.hitung_score(self))
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
@@ -422,7 +436,7 @@ TERBANG = False
 game_over = False
 
 def game_ptero ():
-    global TERBANG, poin ,speed,game_over,pipa,obstacles
+    global TERBANG, poin ,speed,game_over,pipa,obstacles,player
     game_over = False
     running = True
     speed = 8
@@ -442,10 +456,10 @@ def game_ptero ():
     while running: 
         if game_over == False: 
             screen.fill((255,255,255))
-            screen.blit(background, (i,0))
-            screen.blit(background, (width+i,0))
+            screen.blit(background_ptero, (i,0))
+            screen.blit(background_ptero, (width+i,0))
             if i <= -width:
-                screen.blit(background, (width+i,0))
+                screen.blit(background_ptero, (width+i,0))
                 i = 0
             i -= speed
 
