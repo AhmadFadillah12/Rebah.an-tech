@@ -17,9 +17,9 @@ background = pygame.transform.scale(background,(width,height))
 background_menu = pygame.image.load('Codingan Morphling/Gambarrr/menu_start.png')
 background_menu = pygame.transform.scale(background_menu,(950,836)) 
 pipa = pygame.image.load('Codingan Morphling/Gambarrr/Pipa/pipa 1.png')
-pipa = pygame.transform.scale(pipa, (80, 400))
+pipa = pygame.transform.scale(pipa, (80, 380))
 pipaatas = pygame.image.load('Codingan Morphling/Gambarrr/Pipa/pipa 2.png')
-pipaatas = pygame.transform.scale(pipaatas, (110, 400))
+pipaatas = pygame.transform.scale(pipaatas, (110, 380))
 
 
 #sementara code gambar di satukan sama code gamenya sebelum dipisah setelah fix gambarnya
@@ -148,7 +148,7 @@ class BurungTerbang(Karakter):
         self.x = 100
         self.y = 936 // 2
         self.image = pygame.image.load('Codingan Morphling/Gambarrr/Ptero/pterodactyl.png')
-        self.image = pygame.transform.scale(self.image, (95, 95))
+        self.image = pygame.transform.scale(self.image, (85, 85))
         self.rect = self.image.get_rect()
         self.rect.center = [self.x,self.y]
         #tambahin animasi wing flapping 
@@ -157,7 +157,7 @@ class BurungTerbang(Karakter):
 
     def terbang (self):
         if self.terbangg == True:
-            self.vel = -20
+            self.vel = -15
             self.terbangg = False
 
     def update (self,user_input):
@@ -425,7 +425,7 @@ def game_ptero ():
     global TERBANG, poin ,speed,game_over,pipa,obstacles
     game_over = False
     running = True
-    speed = 10
+    speed = 8
     poin = 0
     score = Score()
     clock = pygame.time.Clock()
