@@ -27,8 +27,10 @@ background_ptero = pygame.transform.scale(background_ptero,(875,936))
 
 #sementara code gambar di satukan sama code gamenya sebelum dipisah setelah fix gambarnya
 Gambar_Dino_Awal   =    pygame.image.load('Codingan Morphling/Gambarrr/dino_idle.png')
-Gambar_Dino_Nunduk =   [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Mati/Dead (2).png'),
-                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Mati/Dead (3).png')] # sementara
+Gambar_Dino_Nunduk =   [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Nunduk/Proses Nunduk1.png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Nunduk/Proses Nunduk2.png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Nunduk/Proses Nunduk3.png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Nunduk/Proses Nunduk4.png'),]
 
 
 Gambar_Dino_Lari   =   [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (1).png'),
@@ -122,7 +124,7 @@ class Dino (Karakter):
             self.index += 1
     def menunduk (self):
         if self.nunduk is True:
-            self.image       = self.dino_nunduk[self.index % 2]
+            self.image       = self.dino_nunduk[self.index % 4]
             self.gojo_rect.y = self.player_nunduk
             self.index      += 1
 
@@ -230,7 +232,6 @@ class Obstacle:
             rintangan.draw(screen)
             rintangan.update()
             if player1.gojo_rect.colliderect(rintangan.rect):
-                death += 1
                 start(Score.hitung_score(self))
                 
 
@@ -288,8 +289,7 @@ class Obstacle_pipa ():
             rintangan.draw(screen)
             rintangan.update()
             if player.ptero_rect.colliderect(rintangan.rect):
-                death += 1
-                start(Score.hitung_score(self))
+                start_ptero(Score.hitung_score(self))
                 
 
     def draw(self, screen):
@@ -357,34 +357,85 @@ class Button:
 button_start = pygame.image.load('Codingan Morphling/Gambarrr/button_start.png')
 start_button = Button(480,500,button_start,0.9)
 button_end = pygame.image.load('Codingan Morphling/Gambarrr/exitt.png')
-end_button = Button(480,620,button_end,0.9)
+end_button = Button(480,600,button_end,0.9)
 game_dino = pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino idle/idle (1).png')
 game_dino = pygame.transform.scale(game_dino,(150,150))
 dino_game = Button(715,395,game_dino,1.15)
 game_ptero = pygame.image.load('Codingan Morphling/Gambarrr/Ptero/pterodactyl.png')
 ptero_game = Button(200,400,game_ptero,0.9)
+gameover_button = pygame.image.load('Codingan Morphling/Gambarrr/Background/PlayAgain.png')
+button_gameover = Button(480,600,gameover_button,0.20)
 
-gameover =  pygame.image.load('Codingan Morphling/Gambarrr/Background/gameover_dino.png')
+
+gameover = pygame.image.load('Codingan Morphling/Gambarrr/Background/gameover_dino.png')
 gameover = pygame.transform.scale(gameover,(950,836))
+gameover_ptero = pygame.image.load ('Codingan Morphling/Gambarrr/Background/gameover_ptero.png')
+gameover_ptero = pygame.transform.scale(gameover_ptero,(950,836))
+
 def start (nilai):
+    if nilai == 0: 
+        running = True
+        while running: 
+            pygame.display.set_mode((950,836))
+            screen.fill((255,255,255))
+            screen.blit(background_menu,(0,0))
+            if start_button.draw():
+                pilih_karakter()
+            if end_button.draw():
+                running = False
+                pygame.quit()
+                exit()
+            high_score = font.render("Your High Score: " + str(Score.high_score()), True, (0, 0, 0))
+            high_scoreRect = high_score.get_rect()
+            high_scoreRect.center = (470, height // 2 )
+            screen.blit(high_score, high_scoreRect)
+            if nilai >Score.high_score():
+                Score.save_high_score(nilai)
+            pygame.display.update()
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+                    pygame.quit()
+                    exit()
+    else: 
+        running = True
+        while running: 
+            pygame.display.set_mode((950,836))
+            screen.blit(gameover,(0,0))
+            if button_gameover.draw():
+                pilih_karakter()
+            score = font.render("Your Score: " + str(nilai), True, (0, 0, 0))
+            scoreRect = score.get_rect()
+            scoreRect.center = (470, 250+ 20)
+            screen.blit(score, scoreRect)
+            high_score = font.render("Your High Score: " + str(Score.high_score()), True, (0, 0, 0))
+            high_scoreRect = high_score.get_rect()
+            high_scoreRect.center = (470, 250 )
+            screen.blit(high_score, high_scoreRect)
+            if nilai >Score.high_score():
+                Score.save_high_score(nilai)
+            pygame.display.update()
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+                    pygame.quit()
+                    exit()
+
+def start_ptero(nilai):
     running = True
     while running: 
         pygame.display.set_mode((950,836))
         screen.fill((255,255,255))
-        screen.blit(background_menu,(0,0))
-        if start_button.draw():
+        screen.blit(gameover_ptero,(0,0))
+        if button_gameover.draw():
             pilih_karakter()
-        if end_button.draw():
-            running = False
-            pygame.quit()
-            exit()
         score = font.render("Your Score: " + str(nilai), True, (0, 0, 0))
         scoreRect = score.get_rect()
-        scoreRect.center = (width // 2, height // 2 + 20)
+        scoreRect.center = (470, 250+ 20)
         screen.blit(score, scoreRect)
         high_score = font.render("Your High Score: " + str(Score.high_score()), True, (0, 0, 0))
         high_scoreRect = high_score.get_rect()
-        high_scoreRect.center = (width // 2, height // 2 )
+        high_scoreRect.center = (470, 250 )
         screen.blit(high_score, high_scoreRect)
         if nilai >Score.high_score():
             Score.save_high_score(nilai)
@@ -416,7 +467,7 @@ def pilih_karakter():
                 pygame.quit()
                 exit()
 
-def game_dino ():
+def game_dino():
     pygame.display.set_mode((width,height))
     global poin, speed ,obstacles,player1
     player1 = Dino()
