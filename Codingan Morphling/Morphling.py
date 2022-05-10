@@ -1,9 +1,9 @@
 from abc import abstractmethod
+from subprocess import DETACHED_PROCESS
 import pygame
 import random
 
 pygame.init()
-
 #Membuat screen, title, dan icon
 width = 1100
 height = 836
@@ -17,9 +17,9 @@ background = pygame.transform.scale(background,(width,height))
 background_menu = pygame.image.load('Codingan Morphling/Gambarrr/menu_start.png')
 background_menu = pygame.transform.scale(background_menu,(950,836)) 
 pipa = pygame.image.load('Codingan Morphling/Gambarrr/Pipa/pipa 1.png')
-pipa = pygame.transform.scale(pipa, (80, 380))
 pipa = pygame.transform.flip(pipa, False, True)
 pipaatas = pygame.image.load('Codingan Morphling/Gambarrr/Pipa/pipa 2.png')
+pipa = pygame.transform.scale(pipa, (80, 380))
 pipaatas = pygame.transform.scale(pipaatas, (110, 380))
 background_ptero = pygame.image.load('Codingan Morphling/Gambarrr/FinalNight1.png')
 background_ptero = pygame.transform.scale(background_ptero,(875,936))
@@ -31,7 +31,6 @@ Gambar_Dino_Nunduk =   [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino
                         pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Mati/Dead (3).png')] # sementara
 
 
-
 Gambar_Dino_Lari   =   [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (1).png'),
                         pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (2).png'),
                         pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (3).png'),
@@ -40,9 +39,6 @@ Gambar_Dino_Lari   =   [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino
                         pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (6).png'),
                         pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (7).png'),
                         pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lari/Run (8).png')]
-
-
-
 
 Gambar_Dino_Melompat = [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lompat/Jump (1).png'),
                         pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lompat/Jump (2).png'),
@@ -60,13 +56,15 @@ Gambar_Dino_Melompat = [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino
 Gambar_Obstacle_Batu = [pygame.image.load('Codingan Morphling/Gambarrr/Batu/Crystal2.png'),
                         pygame.image.load('Codingan Morphling/Gambarrr/Batu/Crystal4.png')]
 
-Gambar_Obstacle_Batu[0] = pygame.transform.scale(Gambar_Obstacle_Batu[0],(90,100))
-Gambar_Obstacle_Batu[1] = pygame.transform.scale(Gambar_Obstacle_Batu[1],(90,100))
+
+
+Gambar_Obstacle_Batu[0] = pygame.transform.scale(Gambar_Obstacle_Batu[0],(90,90))
+Gambar_Obstacle_Batu[1] = pygame.transform.scale(Gambar_Obstacle_Batu[1],(90,90))
 pohon = pygame.image.load('Codingan Morphling/Gambarrr/Pohon/7.png')
-pohon = pygame.transform.scale(pohon, (90, 150))
+pohon = pygame.transform.scale(pohon, (90, 130))
 bird = pygame.image.load('Codingan Morphling/Gambarrr/seagull.png')
 pohonbesar = pygame.image.load('Codingan Morphling/Gambarrr/Pohon/1.png')
-pohonbesar = pygame.transform.scale(pohonbesar, (130, 130))
+pohonbesar = pygame.transform.scale(pohonbesar, (130, 120))
 
 class Karakter ():
     playerx = 75
@@ -221,21 +219,23 @@ class Obstacle:
             rintangan.draw(screen)
             rintangan.update()
             if player1.gojo_rect.colliderect(rintangan.rect):
+                death += 1
                 start(Score.hitung_score(self))
+                
 
 class Pohon(Obstacle):
     def __init__(self, image):
         self.image = image
         self.rect = self.image.get_rect()
         self.rect.x = width
-        self.rect.y = 480
+        self.rect.y = 500
 
 class PohonBesar(Obstacle):
     def __init__(self, image):
         self.image = image
         self.rect = self.image.get_rect()
         self.rect.x = width
-        self.rect.y = 520
+        self.rect.y = 530
     
 class Batu(Obstacle):
     def __init__(self, image,type):
@@ -243,33 +243,43 @@ class Batu(Obstacle):
         self.image = image[self.type]
         self.rect = self.image.get_rect()
         self.rect.x = width
-        self.rect.y = 530
+        self.rect.y = 540
 
 class Bird(Obstacle):
     def __init__(self,image):
         self.image = image
         self.rect = self.image.get_rect()
         self.rect.x = width
-        self.rect.y = random.randint(480,500)
+        self.rect.y = random.randint(450,500)
 
 class Obstacle_pipa ():
     def update(self):
         self.rect.x -= speed
-        if self.rect.x < -self.rect.width:
-            obstacles.pop()
-            obstacles.pop()
-    
+       
     def ganti_rintangan(self):
-        if obstacles == []: 
-            obstacles.append(Pipa(pipa,1))
-            obstacles.append(Pipa(pipaatas,-1))
+            x = random.randint(300 , 700)
+            pipaa = pygame.transform.scale(pipa, (80, 936 - x - 170))
+            pipaatass = pygame.transform.scale(pipaatas, (110, x))
+            if poin % 50 == 0 and poin < 1000:
+                obstacles.append(Pipa(pipaa,1))
+                obstacles.append(Pipa(pipaatass,-1))
+            if poin > 1000 and poin < 2000: 
+                if poin % 40== 0:
+                    obstacles.append(Pipa(pipaa,1))
+                    obstacles.append(Pipa(pipaatass,-1))
+            if poin > 2000 and poin < 3000:
+                if poin % 30 == 0:
+                    obstacles.append(Pipa(pipaa,1))
+                    obstacles.append(Pipa(pipaatass,-1))
     
     def buat_rintangan(self):
         for rintangan in obstacles:
             rintangan.draw(screen)
             rintangan.update()
             if player.ptero_rect.colliderect(rintangan.rect):
+                death += 1
                 start(Score.hitung_score(self))
+                
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
@@ -278,7 +288,6 @@ class Pipa(Obstacle_pipa):
     def __init__(self,image,posisi):
         self.image = image
         self.rect = self.image.get_rect()
-        # x = random.randint()
         if posisi == 1: 
             self.rect.bottomleft = (885,950)
         if posisi == -1:
@@ -339,10 +348,13 @@ start_button = Button(480,500,button_start,0.9)
 button_end = pygame.image.load('Codingan Morphling/Gambarrr/exitt.png')
 end_button = Button(480,620,button_end,0.9)
 game_dino = pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino idle/idle (1).png')
-dino_game = Button(715,395,game_dino,1)
+game_dino = pygame.transform.scale(game_dino,(150,150))
+dino_game = Button(715,395,game_dino,1.15)
 game_ptero = pygame.image.load('Codingan Morphling/Gambarrr/Ptero/pterodactyl.png')
-ptero_game = Button(190,100,game_ptero,0.9)
+ptero_game = Button(200,400,game_ptero,0.9)
 
+gameover =  pygame.image.load('Codingan Morphling/Gambarrr/Background/gameover_dino.png')
+gameover = pygame.transform.scale(gameover,(950,836))
 def start (nilai):
     running = True
     while running: 
@@ -372,11 +384,14 @@ def start (nilai):
                 pygame.quit()
                 exit()
 
+background_select = pygame.image.load('Codingan Morphling/Gambarrr/Background/character_select.png')
+background_select = pygame.transform.scale(background_select,(950,836))
+
 def pilih_karakter():
     running = True
     while running: 
-        screen.fill((255,255,255))
-        screen.blit(background_menu,(0,0))
+        screen.fill((225,225,255))
+        screen.blit(background_select,(0,0))
 
         if dino_game.draw():
             game_dino()
@@ -392,7 +407,7 @@ def pilih_karakter():
 
 def game_dino ():
     pygame.display.set_mode((width,height))
-    global poin, speed ,obstacles,death,player1
+    global poin, speed ,obstacles,player1
     player1 = Dino()
     running = True 
     i = 0
@@ -436,7 +451,7 @@ TERBANG = False
 game_over = False
 
 def game_ptero ():
-    global TERBANG, poin ,speed,game_over,pipa,obstacles,player
+    global TERBANG, poin ,speed,game_over,pipa,obstacles,player,pipaatas,counter
     game_over = False
     running = True
     speed = 8
@@ -448,8 +463,6 @@ def game_ptero ():
     width = 870
     height = 936
     player = BurungTerbang()
-    # pipabawah = Pipa(pipa,1)
-    # pipa_atas = Pipa(pipaatas,-1)
     obstacle = Obstacle_pipa()
     pygame.display.set_mode((width,height))
 
