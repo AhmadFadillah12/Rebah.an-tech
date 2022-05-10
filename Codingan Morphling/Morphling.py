@@ -74,6 +74,7 @@ Gambar_Obstacle_Batu[1] = pygame.transform.scale(Gambar_Obstacle_Batu[1],(90,90)
 pohon = pygame.image.load('Codingan Morphling/Gambarrr/Pohon/7.png')
 pohon = pygame.transform.scale(pohon, (90, 130))
 bird = pygame.image.load('Codingan Morphling/Gambarrr/seagull.png')
+bird = pygame.transform.scale(bird, (70, 70))
 pohonbesar = pygame.image.load('Codingan Morphling/Gambarrr/Pohon/1.png')
 pohonbesar = pygame.transform.scale(pohonbesar, (130, 120))
 
@@ -99,7 +100,7 @@ class Karakter ():
 class Dino (Karakter):
     def __init__(self):
         self.player_vel = 11
-        self.player_nunduk = 500# batas sementara
+        self.player_y = 490# batas sementara
 
         self.image       = Gambar_Dino_Awal
         self.dino_lari   = Gambar_Dino_Lari
@@ -126,18 +127,21 @@ class Dino (Karakter):
             if self.gojo_vel < -self.player_vel:
                 self.lompat = False
                 self.gojo_vel = self.player_vel
+                self.gojo_rect.y = self.player_y
             self.index += 1
 
     def menunduk (self):
         if self.nunduk is True:
             self.image       = self.dino_nunduk[self.index % 4]
-            self.gojo_rect.y = self.player_nunduk
+            self.gojo_rect.y = self.player_y + 40
             self.index      += 1
 
     def bergerak(self):
         if self.lari is True:
+            self.gojo_rect.y = self.player_y
             self.image = self.dino_lari[self.index % 8]
             self.index += 1
+
     def update (self, user_input):
         if self.index >= 12:
             self.index =0
@@ -152,9 +156,15 @@ class Dino (Karakter):
         if (self.lompat is False and user_input[pygame.K_UP] ) or (self.lompat is False and user_input[pygame.K_SPACE]) :
             self.lompat = True
             self.nunduk = False
+            self.lari = False
         elif (self.nunduk is False and user_input[pygame.K_DOWN]):
             self.lompat = False
             self.nunduk = True
+            self.lari = False
+        elif not (self.lompat or user_input[pygame.K_DOWN]):
+            self.nunduk = False
+            self.lari = True
+            self.lompat = False
         
 
     def draw (self,screen):
@@ -267,7 +277,7 @@ class Bird(Obstacle):
         self.image = image
         self.rect = self.image.get_rect()
         self.rect.x = width
-        self.rect.y = random.randint(450,500)
+        self.rect.y = random.randint(380,500)
 
 class Obstacle_pipa ():
     def update(self):
@@ -330,7 +340,7 @@ class Score:
         return high_score
 
     def save_high_score(new_high_score):
-            high_score_file = open("high_score.txt", "w")
+            high_score_file = open("Codingan Morphling/high_score.txt", "w")
             high_score_file.write(str(new_high_score))
             high_score_file.close()
 
