@@ -99,7 +99,7 @@ class Karakter ():
 class Dino (Karakter):
     def __init__(self):
         self.player_vel = 11
-        self.player_nunduk = 600 # batas sementara
+        self.player_nunduk = 500# batas sementara
 
         self.image       = Gambar_Dino_Awal
         self.dino_lari   = Gambar_Dino_Lari
@@ -127,6 +127,7 @@ class Dino (Karakter):
                 self.lompat = False
                 self.gojo_vel = self.player_vel
             self.index += 1
+
     def menunduk (self):
         if self.nunduk is True:
             self.image       = self.dino_nunduk[self.index % 4]
