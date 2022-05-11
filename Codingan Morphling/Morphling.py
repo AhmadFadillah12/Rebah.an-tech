@@ -166,6 +166,7 @@ class Dino (Karakter):
             self.lari = True
             self.lompat = False
         
+        
 
     def draw (self,screen):
         screen.blit(self.image, (self.gojo_rect.x, self.gojo_rect.y))
@@ -241,7 +242,7 @@ class Obstacle:
             elif x == 2:
                 obstacles.append(Bird(bird))
             elif x == 3:
-                obstacles.append(Pohon(pohon))
+                obstacles.append(PohonBesar(pohonbesar))
 
     def buat_rintangan (self):
         for rintangan in obstacles:
@@ -286,7 +287,7 @@ class Obstacle_pipa ():
 
     
     def ganti_rintangan(self):
-            x = random.randint(300 , 700)
+            x = random.randint(300 , 600)
             pipaa = pygame.transform.scale(pipa, (80, 936 - x - 170))
             pipaatass = pygame.transform.scale(pipaatas, (110, x))
             if poin % 50 == 0 and poin < 1000:
@@ -388,6 +389,29 @@ gameover = pygame.transform.scale(gameover,(950,836))
 gameover_ptero = pygame.image.load ('Codingan Morphling/Gambarrr/Background/gameover_ptero.png')
 gameover_ptero = pygame.transform.scale(gameover_ptero,(950,836))
 
+
+def pause():
+    paused = True
+    clock = pygame.time.Clock()
+    screen.fill((255,255,255))
+    # screen.blit(, (0, 0))
+    # screen.blit("Pause",35, 1100/2, 836/2)
+    # screen.blit("Tekan C Untuk Resume", 20, 1100/2, 836/2+70)
+    # screen.blit("Tekan Q untuk keluar", 20, 1000/2, 836/2+97)
+    pygame.display.update()
+
+    clock.tick(speed)
+    while paused:
+        clock.tick(speed)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    paused = False
+                elif event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+
 def start (nilai):
     if nilai == 0: 
         running = True
@@ -443,7 +467,7 @@ def start (nilai):
 
 def start_ptero(nilai):
     running = True
-    while running: 
+    while running:  
         pygame.display.set_mode((950,836))
         screen.fill((255,255,255))
         screen.blit(gameover_ptero,(0,0))
@@ -469,7 +493,7 @@ def start_ptero(nilai):
                 running = False
                 pygame.quit()
                 exit()
-
+            
 background_select = pygame.image.load('Codingan Morphling/Gambarrr/Background/character_select.jpeg')
 background_select = pygame.transform.scale(background_select,(950,836))
 
@@ -519,7 +543,7 @@ def game_dino():
         player1.update(user_input)
 
         #Membuat rintangan 
-        obstacle.ganti_rintangan()
+        Obstacle.ganti_rintangan()
         obstacle.buat_rintangan()
 
         for event in pygame.event.get():
@@ -527,6 +551,9 @@ def game_dino():
                 running = False
                 pygame.quit()
                 exit()
+            elif user_input[pygame.K_p]:
+                pause()
+            
 
         clock.tick(25)
         score.hitung_score()
@@ -554,6 +581,7 @@ def game_ptero ():
 
     while running: 
         if game_over == False: 
+            user_input = pygame.key.get_pressed()
             screen.fill((255,255,255))
             screen.blit(background_ptero, (i,0))
             screen.blit(background_ptero, (width+i,0))
@@ -587,6 +615,8 @@ def game_ptero ():
                 running = False
                 pygame.quit()
                 exit()
+            if user_input[pygame.K_p]:
+                pause()
 
         
 start(0)
