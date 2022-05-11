@@ -205,9 +205,9 @@ class BurungTerbang(Karakter):
             self.bergerak()
 
         if TERBANG == True:
-            self.vel += 3
-            if self.vel > 10:
-                self.vel = 10
+            self.vel += 4
+            if self.vel > 12:
+                self.vel = 12
             if self.rect.bottom < 936:
                 self.rect.y += self.vel
             if self.rect.top < 0:
@@ -229,7 +229,8 @@ class Obstacle:
     def draw(self, screen):
         screen.blit(self.image, self.rect)
 
-    def ganti_rintangan (self):
+    @staticmethod
+    def ganti_rintangan ():
         if obstacles == []:
             x = random.randint(0,3)
             if x == 0:
@@ -282,7 +283,8 @@ class Bird(Obstacle):
 class Obstacle_pipa ():
     def update(self):
         self.rect.x -= speed
-       
+
+    
     def ganti_rintangan(self):
             x = random.randint(300 , 700)
             pipaa = pygame.transform.scale(pipa, (80, 936 - x - 170))
@@ -306,7 +308,6 @@ class Obstacle_pipa ():
             if player.ptero_rect.colliderect(rintangan.rect):
                 start_ptero(Score.hitung_score(self))
                 
-
     def draw(self, screen):
         screen.blit(self.image, self.rect)
 
@@ -382,8 +383,6 @@ gameover_button = pygame.image.load('Codingan Morphling/Gambarrr/Background/Play
 button_gameover = Button(480,600,gameover_button,0.20)
 gameover_button_exit = pygame.image.load('Codingan Morphling/Gambarrr/Background/button_exit.png')
 button_gameover_exit = Button(480,680,gameover_button_exit,1.2)
-
-
 gameover = pygame.image.load('Codingan Morphling/Gambarrr/Background/gameover_dino.png')
 gameover = pygame.transform.scale(gameover,(950,836))
 gameover_ptero = pygame.image.load ('Codingan Morphling/Gambarrr/Background/gameover_ptero.png')
