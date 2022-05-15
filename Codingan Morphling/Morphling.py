@@ -32,12 +32,15 @@ class Obstacle:
             elif x == 3:
                 obstacles.append(PohonBesar(pohonbesar))
 
-    def buat_rintangan (self):
+    def buat_rintangan (self,evo):
         for rintangan in obstacles:
             rintangan.draw(screen)
             rintangan.update()
             if player1.gojo_rect.colliderect(rintangan.rect):
-                start(Score.hitung_score(self))
+                if evo == True: 
+                    pass
+                else:
+                    start(Score.hitung_score(self))
 class Pohon(Obstacle):
     def __init__(self, image):
         self.image = image
@@ -175,6 +178,8 @@ def start (nilai):
                     running = False
                     pygame.quit()
                     exit()
+    elif evo == True:
+        pass
     else: 
         running = True
         while running: 
@@ -253,7 +258,8 @@ def pilih_karakter():
 
 def game_dino():
     pygame.display.set_mode((width,height))
-    global poin, speed ,obstacles,player1
+    global poin, speed ,obstacles,player1,evo
+    evo = False
     player1 = Dino()
     running = True 
     i = 0
@@ -276,11 +282,18 @@ def game_dino():
         #Menampilkan user dan mengatur gerakannya
         player1.draw(screen)
         user_input = pygame.key.get_pressed()
-        player1.update(user_input)
+        if poin > 100: 
+            evo = True
+            player1.evolusi(user_input,evo)
+            Obstacle.ganti_rintangan()
+            obstacle.buat_rintangan(evo)
+        else: 
+            player1.update(user_input)
+            Obstacle.ganti_rintangan()
+            obstacle.buat_rintangan(evo)
 
         #Membuat rintangan 
-        Obstacle.ganti_rintangan()
-        obstacle.buat_rintangan()
+        
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

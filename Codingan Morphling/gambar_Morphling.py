@@ -40,6 +40,33 @@ Gambar_Dino_Melompat = [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino
                         pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lompat/Jump (10).png'),
                         pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lompat/Jump (11).png'),
                         pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Lompat/Jump (12).png')]
+
+Gambar_Dino_Awal_evo   =    pygame.image.load('Codingan Morphling/Gambarrr/dino_idle.png')
+Gambar_Dino_Nunduk_evo =   [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Nunduk/Proses Nunduk1.png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Nunduk/Proses Nunduk2.png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Nunduk/Proses Nunduk3.png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Nunduk/Proses Nunduk4.png'),]
+Gambar_Dino_Lari_evo   =   [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lari/Run (1).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lari/Run (2).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lari/Run (3).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lari/Run (4).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lari/Run (5).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lari/Run (6).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lari/Run (7).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lari/Run (8).png')]
+Gambar_Dino_Melompat_evo = [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lompat/Jump (1).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lompat/Jump (2).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lompat/Jump (3).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lompat/Jump (4).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lompat/Jump (5).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lompat/Jump (6).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lompat/Jump (7).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lompat/Jump (8).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lompat/Jump (9).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lompat/Jump (10).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lompat/Jump (11).png'),
+                        pygame.image.load('Codingan Morphling/Gambarrr/Dino/Evolusi/Dino Lompat/Jump (12).png')]
+
 Gambar_Obstacle_Batu = [pygame.image.load('Codingan Morphling/Gambarrr/Batu/Crystal2.png'),
                         pygame.image.load('Codingan Morphling/Gambarrr/Batu/Crystal4.png')]
 Gambar_Ptero = [pygame.image.load('Codingan Morphling/Gambarrr/Ptero/Pterodactyl1.png'),
