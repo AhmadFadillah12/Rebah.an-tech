@@ -177,6 +177,40 @@ def pause():
                 elif event.key == pygame.K_ESCAPE:
                     pygame.quit()
 
+def how_to_play():
+    running = True
+    while running: 
+        pygame.display.set_mode((950,836))
+        screen.fill((255,255,255))
+        screen.blit(background_how_to,(0,0))
+
+        if end_button.draw():
+            start(0)
+
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+                pygame.quit()
+                exit()
+
+def credits():
+    running = True
+    while running: 
+        pygame.display.set_mode((950,836))
+        screen.fill((255,255,255))
+        screen.blit(background_credits,(0,0))
+
+        if end_button.draw():
+            start(0)
+
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+                pygame.quit()
+                exit()
+
 def start (nilai):
     # pygame.mixer.music.load('Codingan Morphling/Music/Menu.ogg') 
     # pygame.mixer.music.play()
@@ -188,13 +222,17 @@ def start (nilai):
             screen.blit(background_menu,(0,0))
             if start_button.draw():
                 pilih_karakter()
+            if button_how_to.draw():
+                how_to_play()
+            if button_credits.draw():
+                credits()
             if end_button.draw():
                 running = False
                 pygame.quit()
                 exit()
             high_score = font.render("Your High Score: " + str(Score.high_score()), True, (0, 0, 0))
             high_scoreRect = high_score.get_rect()
-            high_scoreRect.center = (470, height // 2 )
+            high_scoreRect.center = (470, height // 2 - 50)
             screen.blit(high_score, high_scoreRect)
             if nilai >Score.high_score():
                 Score.save_high_score(nilai)

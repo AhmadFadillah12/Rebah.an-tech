@@ -44,11 +44,19 @@ class Button:
 #PILIHAN KARAKTER
 #Tombol Start
 button_start = pygame.image.load('Codingan Morphling/Gambarrr/Background/button_start.png')
-start_button = Button(480,500,button_start,0.9)
+start_button = Button(480,450,button_start,0.8)
+
+#Tombol How to play
+how_to = pygame.image.load('Codingan Morphling/Gambarrr/Background/howtoplay_button.png')
+button_how_to = Button(480,530,how_to,0.15)
+
+#Tombol Credits
+credits = pygame.image.load('Codingan Morphling/Gambarrr/Background/CREDITS.png')
+button_credits = Button(480,610,credits,0.18)
 
 #Tombol Exit
 button_end = pygame.image.load('Codingan Morphling/Gambarrr/Background/exitt.png')
-end_button = Button(480,600,button_end,0.9)
+end_button = Button(480,690,button_end,0.8)
 
 #Gambar Dino di pilihan karakter
 x=0

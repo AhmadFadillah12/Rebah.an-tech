@@ -14,6 +14,14 @@ pygame.display.set_icon(icon)
 background_ptero = pygame.image.load('Codingan Morphling/Gambarrr/FinalNight1.png')
 background_ptero = pygame.transform.scale(background_ptero,(875,936))
 
+#Background How to Play
+background_how_to = pygame.image.load('Codingan Morphling/Gambarrr/Background/howtoplay.jpg')
+background_how_to = pygame.transform.scale(background_how_to,(950,836))
+
+#Background Credits
+background_credits = pygame.image.load('Codingan Morphling/Gambarrr/Background/credits_bg.jpg')
+background_credits = pygame.transform.scale(background_credits,(950,836))
+
 #Gambar Karakter
 Gambar_Dino_Awal   =    pygame.image.load('Codingan Morphling/Gambarrr/dino_idle.png')
 Gambar_Dino_Nunduk =   [pygame.image.load('Codingan Morphling/Gambarrr/Dino/Dino Nunduk/Proses Nunduk1.png'),
