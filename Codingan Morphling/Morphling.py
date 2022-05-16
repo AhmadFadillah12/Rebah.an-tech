@@ -11,9 +11,14 @@ from karakter_Morphling import *
 class Obstacle:
     obstacles = []
     def update(self):
-        self.rect.x -= speed
-        if self.rect.x <-self.rect.width:
-            obstacles.pop()
+        if evo == True: 
+            self.rect.x -= speed
+            if self.rect.x > -self.rect.width:
+                obstacles.pop()
+        else:
+            self.rect.x -= speed
+            if self.rect.x <-self.rect.width:
+                obstacles.pop()
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
@@ -31,18 +36,20 @@ class Obstacle:
                 obstacles.append(Bird(bird))
             elif x == 3:
                 obstacles.append(PohonBesar(pohonbesar))
+           
 
     def buat_rintangan (self,evo):
         for rintangan in obstacles:
             rintangan.draw(screen)
             rintangan.update()
             if player1.gojo_rect.colliderect(rintangan.rect):
-                dead_sound = pygame.mixer.Sound('Codingan Morphling/Music/Mati.ogg') 
-                dead_sound.play()
                 if evo == True: 
                     pass
                 else:
+                    dead_sound = pygame.mixer.Sound('Codingan Morphling/Music/Mati.ogg') 
+                    dead_sound.play()
                     start(Score.hitung_score(self))
+
 class Pohon(Obstacle):
     def __init__(self, image):
         self.image = image
@@ -71,8 +78,6 @@ class Bird(Obstacle):
 class Obstacle_pipa ():
     def update(self):
         self.rect.x -= speed
-
-    
     def ganti_rintangan(self):
             x = random.randint(300 , 600)
             pipaa = pygame.transform.scale(pipa, (80, 936 - x - 170))
@@ -95,9 +100,27 @@ class Obstacle_pipa ():
             rintangan.update()
             if player.ptero_rect.colliderect(rintangan.rect):
                 start_ptero(Score.hitung_score(self))
-                
+
     def draw(self, screen):
         screen.blit(self.image, self.rect)
+
+class Powerup : 
+    def __init__(self):
+        self.image = powerup
+        self.rect = self.image.get_rect()
+        self.rect.x = width
+        self.rect.y = 480
+
+    def power (self): 
+            self.draw(screen)
+            self.update()
+
+    def draw(self, screen):
+        screen.blit(self.image, self.rect)
+    
+    def update(self):
+        self.rect.x -= speed
+
 class Pipa(Obstacle_pipa):
     def __init__(self,image,posisi):
         self.image = image
@@ -156,8 +179,8 @@ def pause():
                     pygame.quit()
 
 def start (nilai):
-    pygame.mixer.music.load('Codingan Morphling/Music/Menu.ogg') 
-    pygame.mixer.music.play()
+    # pygame.mixer.music.load('Codingan Morphling/Music/Menu.ogg') 
+    # pygame.mixer.music.play()
     if nilai == 0: 
         running = True
         while running: 
@@ -248,12 +271,12 @@ def pilih_karakter():
         screen.fill((225,225,255))
         screen.blit(background_select,(0,0))
         if dino_game.draw():
-            pygame.mixer.music.load('Codingan Morphling/Music/Background.ogg') 
-            pygame.mixer.music.play(-1)
+            # pygame.mixer.music.load('Codingan Morphling/Music/Background.ogg') 
+            # pygame.mixer.music.play(-1)
             game_dino()
         if ptero_game.draw():
-            pygame.mixer.music.load('Codingan Morphling/Music/Background.ogg') 
-            pygame.mixer.music.play(-1)
+            # pygame.mixer.music.load('Codingan Morphling/Music/Background.ogg') 
+            # pygame.mixer.music.play(-1)
             game_ptero()
         
         pygame.display.update()
@@ -276,6 +299,7 @@ def game_dino():
     clock = pygame.time.Clock()
     score = Score()
     obstacle = Obstacle()
+    power_up = Powerup()
 
     while running: 
         screen.fill((255,255,255))
@@ -290,18 +314,27 @@ def game_dino():
         player1.draw(screen)
         user_input = pygame.key.get_pressed()
 
-        player1.update(user_input)
-
-        if poin > 100: 
-            evo = True
-            player1.evolusi(user_input,evo)
-            Obstacle.ganti_rintangan()
-            obstacle.buat_rintangan(evo)
-        else:
-            player1.update(user_input)
-            Obstacle.ganti_rintangan()
-            obstacle.buat_rintangan(evo)
+        # if poin > 100 and poin < 300: 
+        #     evo = True
+        #     player1.evolusi(user_input,evo)
+        #     Obstacle.ganti_rintangan()
+        #     obstacle.buat_rintangan(evo)
+        # elif poin > 300:
+        #     evo = False
+        #     player1.update(user_input,evo)
+        #     Obstacle.ganti_rintangan()
+        #     obstacle.buat_rintangan(evo)
+        # else:
+        if poin > 100:
+            power_up.power()
+            if player1.gojo_rect.colliderect(power_up.rect):
+                evo = True
+                
+        player1.update(user_input,evo)
+        Obstacle.ganti_rintangan()
+        obstacle.buat_rintangan(evo)
             
+        
 
         #Membuat rintangan 
         

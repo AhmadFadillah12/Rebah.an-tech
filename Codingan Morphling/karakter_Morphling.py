@@ -91,25 +91,56 @@ class Dino (Karakter):
             self.image = self.dino_lari_evo[self.index % 8]
             self.index += 1
 
-    def evolusi (self,user_input,evo): 
-        if evo == True:
+    # def evolusi (self,user_input,evo): 
+    #     if evo == True:
+    #         self.player_vel = 11
+    #         self.player_y = 360
+    #         self.dino_lari_evo   = Gambar_Dino_Lari_evo
+    #         self.dino_lompat_evo = Gambar_Dino_Melompat_evo
+    #         self.dino_nunduk_evo = Gambar_Dino_Nunduk_evo
+
+    #         if self.index >= 12:
+    #             self.index =0
+    
+    #         if self.lompat   is True:
+    #             self.melompat_evo()
+    #         elif self.nunduk is True:
+    #             self.menunduk_evo()
+    #         elif self.lari   is True:
+    #             self.bergerak_evo()
+        
+    #         if (self.lompat is False and user_input[pygame.K_UP] ) or (self.lompat is False and user_input[pygame.K_SPACE]) :
+    #             self.lompat = True
+    #             self.nunduk = False
+    #             self.lari = False
+    #         elif (self.nunduk is False and user_input[pygame.K_DOWN]):
+    #             self.lompat = False
+    #             self.nunduk = True
+    #             self.lari = False
+    #         elif not (self.lompat or user_input[pygame.K_DOWN]):
+    #             self.nunduk = False
+    #             self.lari = True
+    #             self.lompat = False
+
+    def update (self, user_input,evo):
+        if evo == False:
             self.player_vel = 11
-            self.player_y = 360
-            self.dino_lari_evo   = Gambar_Dino_Lari_evo
-            self.dino_lompat_evo = Gambar_Dino_Melompat_evo
-            self.dino_nunduk_evo = Gambar_Dino_Nunduk_evo
+            self.gojo_recty = 490
+            self.player_y = self.gojo_recty
 
             if self.index >= 12:
                 self.index =0
     
             if self.lompat   is True:
-                self.melompat_evo()
+                self.melompat()
             elif self.nunduk is True:
-                self.menunduk_evo()
+                self.menunduk()
             elif self.lari   is True:
-                self.bergerak_evo()
+                self.bergerak()
         
             if (self.lompat is False and user_input[pygame.K_UP] ) or (self.lompat is False and user_input[pygame.K_SPACE]) :
+                jump_sound = pygame.mixer.Sound('Codingan Morphling/Music/Jump.ogg') 
+                jump_sound.play()
                 self.lompat = True
                 self.nunduk = False
                 self.lari = False
@@ -121,32 +152,36 @@ class Dino (Karakter):
                 self.nunduk = False
                 self.lari = True
                 self.lompat = False
+        elif evo == True:
+            if evo == True:
+                self.player_vel = 11
+                self.player_y = 360
+                self.dino_lari_evo   = Gambar_Dino_Lari_evo
+                self.dino_lompat_evo = Gambar_Dino_Melompat_evo
+                self.dino_nunduk_evo = Gambar_Dino_Nunduk_evo
 
-    def update (self, user_input):
-        if self.index >= 12:
-            self.index =0
- 
-        if self.lompat   is True:
-            self.melompat()
-        elif self.nunduk is True:
-            self.menunduk()
-        elif self.lari   is True:
-            self.bergerak()
-    
-        if (self.lompat is False and user_input[pygame.K_UP] ) or (self.lompat is False and user_input[pygame.K_SPACE]) :
-            jump_sound = pygame.mixer.Sound('Codingan Morphling/Music/Jump.ogg') 
-            jump_sound.play()
-            self.lompat = True
-            self.nunduk = False
-            self.lari = False
-        elif (self.nunduk is False and user_input[pygame.K_DOWN]):
-            self.lompat = False
-            self.nunduk = True
-            self.lari = False
-        elif not (self.lompat or user_input[pygame.K_DOWN]):
-            self.nunduk = False
-            self.lari = True
-            self.lompat = False
+                if self.index >= 12:
+                    self.index =0
+        
+                if self.lompat   is True:
+                    self.melompat_evo()
+                elif self.nunduk is True:
+                    self.menunduk_evo()
+                elif self.lari   is True:
+                    self.bergerak_evo()
+            
+                if (self.lompat is False and user_input[pygame.K_UP] ) or (self.lompat is False and user_input[pygame.K_SPACE]) :
+                    self.lompat = True
+                    self.nunduk = False
+                    self.lari = False
+                elif (self.nunduk is False and user_input[pygame.K_DOWN]):
+                    self.lompat = False
+                    self.nunduk = True
+                    self.lari = False
+                elif not (self.lompat or user_input[pygame.K_DOWN]):
+                    self.nunduk = False
+                    self.lari = True
+                    self.lompat = False
 
     def draw (self,screen):
         screen.blit(self.image, (self.gojo_rect.x, self.gojo_rect.y))

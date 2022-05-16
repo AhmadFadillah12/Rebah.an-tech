@@ -78,6 +78,7 @@ Gambar_Ptero = [pygame.image.load('Codingan Morphling/Gambarrr/Ptero/Pterodactyl
                 pygame.image.load('Codingan Morphling/Gambarrr/Ptero/Pterodactyl7.png'),
                 pygame.image.load('Codingan Morphling/Gambarrr/Ptero/Pterodactyl8.png'),]
 
+
 #Gambar Obstacle Ptero
 pipa = pygame.image.load('Codingan Morphling/Gambarrr/Pipa/pipa 1.png')
 pipa = pygame.transform.flip(pipa, False, True)
@@ -94,6 +95,8 @@ bird = pygame.image.load('Codingan Morphling/Gambarrr/seagull.png')
 bird = pygame.transform.scale(bird, (70, 70))
 pohonbesar = pygame.image.load('Codingan Morphling/Gambarrr/Pohon/1.png')
 pohonbesar = pygame.transform.scale(pohonbesar, (130, 120))
+powerup = pygame.image.load('Codingan Morphling/Gambarrr/Powerup/powerup.png')
+powerup = pygame.transform.scale(powerup, (70, 70))
 
 #Background memilih karakter   
 background_select = pygame.image.load('Codingan Morphling/Gambarrr/Background/character_select.jpeg')
