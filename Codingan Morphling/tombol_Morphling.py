@@ -8,17 +8,31 @@ class Button:
         self.x = x
         self.y = y
         self.dino = True
+        self.x_s = x
+        self.y_s = y
         self.image = pygame.transform.scale(image, (int(self.width * scale) , int(self.height * scale)))
         self.rect = self.image.get_rect(center=(self.x, self.y))
         self.clicked = False
+        self.count=0
 
     def draw(self):
         action = False
         pos = pygame.mouse.get_pos()
         if self.rect.collidepoint(pos):
+            if self.count<3:
+                self.x+=1
+                self.y+=1
+                self.rect = self.image.get_rect(center=(self.x, self.y))
+                self.count+=1
+            
             if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
                 self.clicked = True
                 action = True
+        else:
+            self.x = self.x_s
+            self.y = self.y_s
+            self.rect = self.image.get_rect(center=(self.x_s, self.y_s))
+            self.count = 0
 
         if pygame.mouse.get_pressed()[0] == 0:
             self.clicked = False
