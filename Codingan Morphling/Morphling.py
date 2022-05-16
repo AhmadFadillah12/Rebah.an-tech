@@ -1,6 +1,6 @@
 import pygame
 import random
-
+import time
 
 pygame.init()
 from gambar_Morphling   import *
@@ -120,7 +120,12 @@ class Powerup :
     
     def update(self):
         self.rect.x -= speed
-
+    def count_down(self):
+        countdown = limit - elapsed_time
+        print(countdown)
+        if countdown < 0:
+            countdown = 0
+            return countdown 
 class Pipa(Obstacle_pipa):
     def __init__(self,image,posisi):
         self.image = image
@@ -288,7 +293,7 @@ def pilih_karakter():
 
 def game_dino():
     pygame.display.set_mode((width,height))
-    global poin, speed ,obstacles,player1,evo
+    global poin, speed ,obstacles,player1,evo,limit,elapsed_time
     evo = False
     player1 = Dino()
     running = True 
@@ -300,8 +305,10 @@ def game_dino():
     score = Score()
     obstacle = Obstacle()
     power_up = Powerup()
-
+    start_time = time.time()
+    limit = 50
     while running: 
+        elapsed_time = time.time() - start_time 
         screen.fill((255,255,255))
         screen.blit(background, (i,0))
         screen.blit(background, (width+i,0))
@@ -313,31 +320,18 @@ def game_dino():
         #Menampilkan user dan mengatur gerakannya
         player1.draw(screen)
         user_input = pygame.key.get_pressed()
-
-        # if poin > 100 and poin < 300: 
-        #     evo = True
-        #     player1.evolusi(user_input,evo)
-        #     Obstacle.ganti_rintangan()
-        #     obstacle.buat_rintangan(evo)
-        # elif poin > 300:
-        #     evo = False
-        #     player1.update(user_input,evo)
-        #     Obstacle.ganti_rintangan()
-        #     obstacle.buat_rintangan(evo)
-        # else:
-        if poin > 100:
+        if poin > 50:
             power_up.power()
             if player1.gojo_rect.colliderect(power_up.rect):
                 evo = True
-                
+                power_up.count_down()
+
+                # if countdown <= 0: 
+                #     evo = False
+
         player1.update(user_input,evo)
         Obstacle.ganti_rintangan()
         obstacle.buat_rintangan(evo)
-            
-        
-
-        #Membuat rintangan 
-        
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

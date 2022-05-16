@@ -94,7 +94,7 @@ pohon = pygame.transform.scale(pohon, (90, 130))
 bird = pygame.image.load('Codingan Morphling/Gambarrr/seagull.png')
 bird = pygame.transform.scale(bird, (70, 70))
 pohonbesar = pygame.image.load('Codingan Morphling/Gambarrr/Pohon/1.png')
-pohonbesar = pygame.transform.scale(pohonbesar, (130, 120))
+pohonbesar = pygame.transform.scale(pohonbesar, (110, 120))
 powerup = pygame.image.load('Codingan Morphling/Gambarrr/Powerup/powerup.png')
 powerup = pygame.transform.scale(powerup, (70, 70))
 
