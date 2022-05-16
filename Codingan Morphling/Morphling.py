@@ -347,7 +347,7 @@ def game_dino():
             i = 0
         i -= speed
 
-        #Menampilkan user dan mengatur gerakannya
+        #Menampilkan user dan mengatur gerakannya 
         player1.draw(screen)
         user_input = pygame.key.get_pressed()
         if poin > 50:
