@@ -37,6 +37,8 @@ class Obstacle:
             rintangan.draw(screen)
             rintangan.update()
             if player1.gojo_rect.colliderect(rintangan.rect):
+                dead_sound = pygame.mixer.Sound('Codingan Morphling/Gambarrr/Music/Mati.wav') 
+                dead_sound.play()
                 if evo == True: 
                     pass
                 else:
@@ -154,6 +156,8 @@ def pause():
                     pygame.quit()
 
 def start (nilai):
+    pygame.mixer.music.load('Codingan Morphling/Gambarrr/Music/Menu.ogg') 
+    pygame.mixer.music.play()
     if nilai == 0: 
         running = True
         while running: 
@@ -240,13 +244,16 @@ def start_ptero(nilai):
 
 def pilih_karakter():
     running = True
-    while running: 
+    while running:
         screen.fill((225,225,255))
         screen.blit(background_select,(0,0))
-
         if dino_game.draw():
+            pygame.mixer.music.load('Codingan Morphling/Gambarrr/Music/Background.ogg') 
+            pygame.mixer.music.play(-1)
             game_dino()
         if ptero_game.draw():
+            pygame.mixer.music.load('Codingan Morphling/Gambarrr/Music/Background.ogg') 
+            pygame.mixer.music.play(-1)
             game_ptero()
         
         pygame.display.update()
@@ -282,15 +289,21 @@ def game_dino():
         #Menampilkan user dan mengatur gerakannya
         player1.draw(screen)
         user_input = pygame.key.get_pressed()
+
+        player1.update(user_input)
+        Obstacle.ganti_rintangan()
+        obstacle.buat_rintangan(evo)
+
         if poin > 100: 
             evo = True
             player1.evolusi(user_input,evo)
             Obstacle.ganti_rintangan()
             obstacle.buat_rintangan(evo)
-        else: 
-            player1.update(user_input)
-            Obstacle.ganti_rintangan()
-            obstacle.buat_rintangan(evo)
+            if poin > 300:
+                player1.update(user_input)
+                Obstacle.ganti_rintangan()
+                obstacle.buat_rintangan(evo)
+            
 
         #Membuat rintangan 
         

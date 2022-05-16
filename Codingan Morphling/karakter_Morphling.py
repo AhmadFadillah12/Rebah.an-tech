@@ -43,8 +43,8 @@ class Dino (Karakter):
 
     def melompat (self):
         if self.lompat is True:
-            # pygame.mixer.music.load('Gambarrr/sound_lompat.mp3') 
-            # pygame.mixer.music.play()
+            #pygame.mixer.music.load('Codingan Morphling/Gambarrr/Music/Jump.ogg') 
+            #pygame.mixer.music.play()
             self.image = self.dino_lompat[self.index % 12]
             self.gojo_rect.y -= self.gojo_vel * 5
             self.gojo_vel -= 1
@@ -134,6 +134,8 @@ class Dino (Karakter):
             self.bergerak()
     
         if (self.lompat is False and user_input[pygame.K_UP] ) or (self.lompat is False and user_input[pygame.K_SPACE]) :
+            jump_sound = pygame.mixer.Sound('Codingan Morphling/Gambarrr/Music/Jump.ogg') 
+            jump_sound.play()
             self.lompat = True
             self.nunduk = False
             self.lari = False
