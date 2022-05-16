@@ -291,18 +291,16 @@ def game_dino():
         user_input = pygame.key.get_pressed()
 
         player1.update(user_input)
-        Obstacle.ganti_rintangan()
-        obstacle.buat_rintangan(evo)
 
         if poin > 100: 
             evo = True
             player1.evolusi(user_input,evo)
             Obstacle.ganti_rintangan()
             obstacle.buat_rintangan(evo)
-            if poin > 300:
-                player1.update(user_input)
-                Obstacle.ganti_rintangan()
-                obstacle.buat_rintangan(evo)
+        else:
+            player1.update(user_input)
+            Obstacle.ganti_rintangan()
+            obstacle.buat_rintangan(evo)
             
 
         #Membuat rintangan 
