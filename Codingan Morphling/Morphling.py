@@ -120,12 +120,6 @@ class Powerup :
     
     def update(self):
         self.rect.x -= speed
-    def count_down(self):
-        countdown = limit - elapsed_time
-        print(countdown)
-        if countdown < 0:
-            countdown = 0
-            return countdown 
 class Pipa(Obstacle_pipa):
     def __init__(self,image,posisi):
         self.image = image
@@ -305,10 +299,8 @@ def game_dino():
     score = Score()
     obstacle = Obstacle()
     power_up = Powerup()
-    start_time = time.time()
-    limit = 50
+    
     while running: 
-        elapsed_time = time.time() - start_time 
         screen.fill((255,255,255))
         screen.blit(background, (i,0))
         screen.blit(background, (width+i,0))
@@ -324,10 +316,7 @@ def game_dino():
             power_up.power()
             if player1.gojo_rect.colliderect(power_up.rect):
                 evo = True
-                power_up.count_down()
-
-                # if countdown <= 0: 
-                #     evo = False
+    
 
         player1.update(user_input,evo)
         Obstacle.ganti_rintangan()
