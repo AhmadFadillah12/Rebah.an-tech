@@ -134,7 +134,7 @@ class Dino (Karakter):
             self.bergerak()
     
         if (self.lompat is False and user_input[pygame.K_UP] ) or (self.lompat is False and user_input[pygame.K_SPACE]) :
-            jump_sound = pygame.mixer.Sound('Codingan Morphling/Gambarrr/Music/Jump.ogg') 
+            jump_sound = pygame.mixer.Sound('Codingan Morphling/Music/Jump.ogg') 
             jump_sound.play()
             self.lompat = True
             self.nunduk = False

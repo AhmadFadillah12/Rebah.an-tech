@@ -37,7 +37,7 @@ class Obstacle:
             rintangan.draw(screen)
             rintangan.update()
             if player1.gojo_rect.colliderect(rintangan.rect):
-                dead_sound = pygame.mixer.Sound('Codingan Morphling/Gambarrr/Music/Mati.wav') 
+                dead_sound = pygame.mixer.Sound('Codingan Morphling/Music/Mati.ogg') 
                 dead_sound.play()
                 if evo == True: 
                     pass
@@ -156,7 +156,7 @@ def pause():
                     pygame.quit()
 
 def start (nilai):
-    pygame.mixer.music.load('Codingan Morphling/Gambarrr/Music/Menu.ogg') 
+    pygame.mixer.music.load('Codingan Morphling/Music/Menu.ogg') 
     pygame.mixer.music.play()
     if nilai == 0: 
         running = True
@@ -248,11 +248,11 @@ def pilih_karakter():
         screen.fill((225,225,255))
         screen.blit(background_select,(0,0))
         if dino_game.draw():
-            pygame.mixer.music.load('Codingan Morphling/Gambarrr/Music/Background.ogg') 
+            pygame.mixer.music.load('Codingan Morphling/Music/Background.ogg') 
             pygame.mixer.music.play(-1)
             game_dino()
         if ptero_game.draw():
-            pygame.mixer.music.load('Codingan Morphling/Gambarrr/Music/Background.ogg') 
+            pygame.mixer.music.load('Codingan Morphling/Music/Background.ogg') 
             pygame.mixer.music.play(-1)
             game_ptero()
         
