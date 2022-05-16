@@ -240,9 +240,9 @@ def start_ptero(nilai):
         pygame.display.set_mode((950,836))
         screen.fill((255,255,255))
         screen.blit(gameover_ptero,(0,0))
-        if button_gameover.draw():
+        if button_gameover_ptero.draw():
             pilih_karakter()
-        if button_gameover_exit.draw():
+        if button_gameover_exit_ptero.draw():
             running = False
             pygame.quit()
             exit()
@@ -299,7 +299,7 @@ def game_dino():
     score = Score()
     obstacle = Obstacle()
     power_up = Powerup()
-    
+
     while running: 
         screen.fill((255,255,255))
         screen.blit(background, (i,0))
@@ -316,7 +316,7 @@ def game_dino():
             power_up.power()
             if player1.gojo_rect.colliderect(power_up.rect):
                 evo = True
-    
+
 
         player1.update(user_input,evo)
         Obstacle.ganti_rintangan()
@@ -338,7 +338,6 @@ def game_dino():
  
 TERBANG = False
 game_over = False
-
 
 def game_ptero ():
     global TERBANG, poin ,speed,game_over,pipa,obstacles,player,pipaatas,counter

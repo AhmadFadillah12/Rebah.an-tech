@@ -64,11 +64,15 @@ ptero_game = Button(200,400,game_ptero,1.5)
 #PILIHAN KETIKA GAME OVER
 #Tombol Play Again
 gameover_button = pygame.image.load('Codingan Morphling/Gambarrr/Background/PlayAgain.png')
-button_gameover = Button(480,600,gameover_button,0.20)
+button_gameover = Button(480,600,gameover_button,0.18)
+gameover_button_ptero = pygame.image.load('Codingan Morphling/Gambarrr/Background/PlayAgain_night.png')
+button_gameover_ptero = Button(480,600,gameover_button_ptero,0.18)
 
 #Tombol Exit
 gameover_button_exit = pygame.image.load('Codingan Morphling/Gambarrr/Background/button_exit.png')
-button_gameover_exit = Button(480,680,gameover_button_exit,1.2)
+button_gameover_exit = Button(480,680,gameover_button_exit,0.18)
+gameover_button_exit_ptero = pygame.image.load('Codingan Morphling/Gambarrr/Background/button_exit_night.png')
+button_gameover_exit_ptero = Button(480,680,gameover_button_exit_ptero,0.18)
 
 #Gambar Dino mati
 gameover = pygame.image.load('Codingan Morphling/Gambarrr/Background/gameover_dino.png')
