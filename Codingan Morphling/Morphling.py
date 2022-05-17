@@ -112,14 +112,15 @@ class Powerup :
         self.rect.y = 480
 
     def power (self): 
-            self.draw(screen)
-            self.update()
-
+        self.draw(screen)
+        self.update()
+     
     def draw(self, screen):
         screen.blit(self.image, self.rect)
     
     def update(self):
         self.rect.x -= speed
+
 class Pipa(Obstacle_pipa):
     def __init__(self,image,posisi):
         self.image = image
@@ -210,7 +211,7 @@ def credits():
                 running = False
                 pygame.quit()
                 exit()
-
+   
 def start (nilai):
     # pygame.mixer.music.load('Codingan Morphling/Music/Menu.ogg') 
     # pygame.mixer.music.play()
@@ -325,7 +326,7 @@ def pilih_karakter():
 
 def game_dino():
     pygame.display.set_mode((width,height))
-    global poin, speed ,obstacles,player1,evo,limit,elapsed_time
+    global poin, speed ,obstacles,player1,evo
     evo = False
     player1 = Dino()
     running = True 
@@ -337,7 +338,8 @@ def game_dino():
     score = Score()
     obstacle = Obstacle()
     power_up = Powerup()
-
+    time  = 150
+    x = 0
     while running: 
         screen.fill((255,255,255))
         screen.blit(background, (i,0))
@@ -350,11 +352,17 @@ def game_dino():
         #Menampilkan user dan mengatur gerakannya 
         player1.draw(screen)
         user_input = pygame.key.get_pressed()
-        if poin > 50:
+        limit = 100 + x
+        if poin >= limit:
             power_up.power()
+            x += 100
             if player1.gojo_rect.colliderect(power_up.rect):
                 evo = True
-
+        if evo == True:
+            time -= 1
+            print(time)
+            if time <= 0:
+                evo = False
 
         player1.update(user_input,evo)
         Obstacle.ganti_rintangan()
@@ -368,7 +376,6 @@ def game_dino():
             elif user_input[pygame.K_p]:
                 pause()
             
-
         clock.tick(25)
         score.hitung_score()
         pygame.display.update()
