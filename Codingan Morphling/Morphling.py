@@ -43,9 +43,6 @@ class Obstacle:
             rintangan.draw(screen)
             rintangan.update()
             if player1.gojo_rect.colliderect(rintangan.rect):
-                if evo == True: 
-                    pass
-                else:
                     dead_sound = pygame.mixer.Sound('Codingan Morphling/Music/Mati.ogg') 
                     dead_sound.play()
                     start(Score.hitung_score(self))
@@ -356,11 +353,11 @@ def game_dino():
         if poin >= limit:
             power_up.power()
             x += 100
+            print(x)
             if player1.gojo_rect.colliderect(power_up.rect):
                 evo = True
         if evo == True:
             time -= 1
-            print(time)
             if time <= 0:
                 evo = False
 
