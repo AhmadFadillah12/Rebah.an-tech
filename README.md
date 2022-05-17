@@ -3,7 +3,7 @@
 ## Screenshots
 
 ## Deskripsi Projek
-Aplikasi ini merupakan permainan tentang seekor dino dan pterodactyl yang harus menghindari rintangan agar tidak mati dengan cara melompat dan menunduk. 
+Aplikasi ini merupakan permainan tentang dua ekor dinosaurus bernama gojo dan pterodactyl yang harus menghindari rintangan agar tidak mati dengan cara melompat dan menunduk. 
 
 Tujuan dari permainan ini adalah mendapatkan score sebanyak-banyaknya dengan cara menghindari rintangan dan seiring berjalannya score, karakter akan berevolusi
 menjadi lebih besar, namun ketika menyentuh score tertentu karakter akan kembali ke bentuk semula. Permainan ini akan berakhir ketika karakter menabrak rintangan.
