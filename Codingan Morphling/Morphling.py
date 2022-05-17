@@ -1,6 +1,5 @@
 import pygame
 import random
-import time
 
 pygame.init()
 from gambar_Morphling   import *
@@ -335,8 +334,7 @@ def game_dino():
     score = Score()
     obstacle = Obstacle()
     power_up = Powerup()
-    time  = 150
-    x = 0
+    time  = 200
     while running: 
         screen.fill((255,255,255))
         screen.blit(background, (i,0))
@@ -349,11 +347,12 @@ def game_dino():
         #Menampilkan user dan mengatur gerakannya 
         player1.draw(screen)
         user_input = pygame.key.get_pressed()
-        limit = 100 + x
-        if poin >= limit:
+        if poin >= 100 and poin <= 300:
             power_up.power()
-            x += 100
-            print(x)
+            if player1.gojo_rect.colliderect(power_up.rect):
+                evo = True
+        if poin >= 500 and poin <= 700:
+            power_up.power()
             if player1.gojo_rect.colliderect(power_up.rect):
                 evo = True
         if evo == True:
