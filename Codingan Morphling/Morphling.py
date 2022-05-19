@@ -105,7 +105,7 @@ class Powerup :
         self.image = powerup
         self.rect = self.image.get_rect()
         self.rect.x = width
-        self.rect.y = 480
+        self.rect.y = 400
 
     def power (self): 
         self.draw(screen)
@@ -335,7 +335,9 @@ def game_dino():
     obstacle = Obstacle()
     power_up = Powerup()
     time  = 200
+    tampilkan_powerup = False
     while running: 
+        
         screen.fill((255,255,255))
         screen.blit(background, (i,0))
         screen.blit(background, (width+i,0))
@@ -347,18 +349,19 @@ def game_dino():
         #Menampilkan user dan mengatur gerakannya 
         player1.draw(screen)
         user_input = pygame.key.get_pressed()
-        if poin >= 100 and poin <= 300:
-            power_up.power()
+        if poin % 100 == 0 or tampilkan_powerup == True :
+            if evo == False:
+                tampilkan_powerup = True
+                power_up.power()
             if player1.gojo_rect.colliderect(power_up.rect):
+                tampilkan_powerup = False
                 evo = True
-        if poin >= 500 and poin <= 700:
-            power_up.power()
-            if player1.gojo_rect.colliderect(power_up.rect):
-                evo = True
+                power_up.rect.x = width
         if evo == True:
             time -= 1
             if time <= 0:
                 evo = False
+                time = 200
 
         player1.update(user_input,evo)
         Obstacle.ganti_rintangan()
