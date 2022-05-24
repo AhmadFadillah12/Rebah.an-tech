@@ -290,7 +290,7 @@ def game_dino():
         user_input = pygame.key.get_pressed()
 
 
-        if poin > 1000  and poin % 1000 == 0 or tampilkan_powerup == True  or user_input[pygame.K_9]:
+        if poin >= 400  and poin % 500 == 0 or tampilkan_powerup == True  or user_input[pygame.K_9]:
             if evo == False:
                 tampilkan_powerup = True
                 power_up.power()
