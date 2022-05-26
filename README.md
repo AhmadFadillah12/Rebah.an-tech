@@ -47,5 +47,5 @@ RA-10
 | Rahman Pajri            | 120140118 | Programmer                    | [Rahman Pajri](https://github.com/rahmanfajri)            |
 | M Fikri Damar M         | 120140077 | Designer                      | [Fikri Damar](https://github.com/fikdum)                  |
 | Anisa Prasetya          | 120140087 | Designer                      | [Anisa Prasetya](https://github.com/anisaprsty)           |
-| Alfian kafilah Ba'its   | 120140109 | Designer                      | [alfiannas](https://github.com/alfiannnas)                |
+| Alfian Kafilah Ba'its   | 120140109 | Designer                      | [Alfian Kafilah Ba'its](https://github.com/alfiannnas)    |
 
