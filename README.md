@@ -1,12 +1,29 @@
-# Rebah.an-tech
+<p align="center">
+   <img alt="menu tanpa tombol" src="https://user-images.githubusercontent.com/100473334/170396076-1fad50af-a235-4fcf-816b-e4698ba7d379.png" width="300">
+<h2 align="center">Hai 👋, Kami dari Tim Rebah.an Tech</h2>
+ <p align="center">Pemrograman Berorientasi Objek RA - 10!</p>
+</p>
+<p align="center">
+    <a href="https://github.com/AhmadFadillah12/Rebah.an-tech#screenshots">Screnshoot Program</a>
+    .
+    <a href="https://github.com/AhmadFadillah12/Rebah.an-tech#deskripsi-projek">Deskripsi</a>
+    .
+    <a href="https://github.com/AhmadFadillah12/Rebah.an-tech#dependensi-paket-library-yang-dibutuhkan-untuk-menjalankan-aplikasi">Library</a>
+    .
+    <a href="https://github.com/AhmadFadillah12/Rebah.an-tech#cara-bermain">Cara Bermain</a>
+    .
+    <a href="https://github.com/AhmadFadillah12/Rebah.an-tech#uml-class-diagram-projek">UML Class</a> 
+    .
+    <a href="https://github.com/AhmadFadillah12/Rebah.an-tech#kontributor-pengembangan-aplikasi">Kontributor</a> 
+</p> 
+
 
 ## Screenshots
 
 ## Deskripsi Projek
-Aplikasi ini merupakan permainan tentang dua ekor dinosaurus bernama gojo (dinosaurus hijau) dan pterodactyl (burung dinosaurus) yang harus menghindari rintangan agar tidak mati dengan cara melompat dan menunduk. 
-
-Tujuan dari permainan ini adalah mendapatkan score sebanyak-banyaknya dengan cara menghindari rintangan dan seiring berjalannya score, karakter akan berevolusi
-menjadi lebih besar dari ukuran awal, namun ketika menyentuh score tertentu karakter akan kembali ke bentuk semula. Permainan ini akan berakhir ketika karakter menabrak rintangan.
+<p align="justify">
+Aplikasi ini merupakan permainan yang dibuat menggunakan library Pygame tentang dua ekor dinosaurus bernama Gojo (Dinosaurus Hijau) dan Pterodactyl (Burung Dinosaurus). Tujuan dari permainan ini adalah mendapatkan score sebanyak-banyaknya dengan cara menghindari rintangan. Untuk memulai permainan, user dapat memilih salah satu karakter di atas dan setiap karakter mempunyai stage dan rintangan yang berbeda. Pada pemilihan karakter Gojo (Dinosaurus Hijau), karakter tersebut harus menghindari rintangan berupa Batu, Love Bird, dan Pohon yang ditampilkan secara random dengan cara melompat dan menunduk agar tidak mati dengan cepat (Game Over). Kemudian, seiring berjalannya score, karakter Gojo ini akan berevolusi menjadi lebih besar dari ukuran semula dan ketika menyentuh score tertentu karakter Gojo akan kembali ke bentuk awal. Permainan akan berakhir apabila karakter menabrak rintangan. Selanjutnya, pada pemilihan karakter Pterodactyl (Burung Dinosaurus), karakter tersebut harus menghindari rintangan berupa Pipa yang terbentuk secara vertikal pada bagian atas dan bawah. Karakter tersebut harus melewati celah di antara kedua pipa yang terbentuk dengan melakukan gerak terbang. Permainan akan berakhir apabila karakter menabrak rintangan (Game Over).
+</p>  
 
 ## Dependensi paket (library) yang dibutuhkan untuk menjalankan aplikasi
 - import pygame
@@ -14,7 +31,7 @@ menjadi lebih besar dari ukuran awal, namun ketika menyentuh score tertentu kara
 - import abc
 
 ## Cara Bermain
-- Pilih tombol Play
+- Pilih tombol Play  
 - Pilih Karakter yang akan digunakan
 - Jika ingin menggunakan karakter Gojo, cara memainkan gamenya yaitu dengan menekan tombol panah atas atau spacebar pada keyboard untuk lompat dan tombol panah bawah untuk menunduk pada keyboard.
 - Jika ingin menggunakan karakter Ptero, cara memainkan gamenya yaitu dengan menekan tombol panah spacebar pada keyboard agar karakter terbang ke atas.
