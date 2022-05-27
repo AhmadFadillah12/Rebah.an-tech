@@ -42,10 +42,10 @@ Aplikasi ini merupakan permainan yang dibuat menggunakan library Pygame tentang 
 RA-10
 | Name | NIM | Tugas | Github|
 | :---: | :---: | :---: | :---: |
-| Ahmad Fadillah          | 120140092 | Programmer                    | [Ahmad Fadillah](https://github.com/AhmadFadillah12)      |
-| William Rusli           | 120140090 | Programmer                    | [ShortOyster](https://github.com/ShorterOyster)           |
-| Rahman Pajri            | 120140118 | Programmer                    | [Rahman Pajri](https://github.com/rahmanfajri)            |
-| M Fikri Damar M         | 120140077 | Designer                      | [Fikri Damar](https://github.com/fikdum)                  |
-| Anisa Prasetya          | 120140087 | Designer                      | [Anisa Prasetya](https://github.com/anisaprsty)           |
-| Alfian Kafilah Ba'its   | 120140109 | Designer                      | [Alfian Kafilah Ba'its](https://github.com/alfiannnas)    |
+| Ahmad Fadillah                  | 120140092 | Programmer                    | [Ahmad Fadillah](https://github.com/AhmadFadillah12)      |
+| William Rusli                   | 120140090 | Programmer                    | [ShortOyster](https://github.com/ShorterOyster)           |
+| Rahman Pajri                    | 120140118 | Programmer                    | [Rahman Pajri](https://github.com/rahmanfajri)            |
+| M Fikri Damar Muchtarom         | 120140077 | Designer                      | [Fikri Damar](https://github.com/fikdum)                  |
+| Anisa Prasetya                  | 120140087 | Designer                      | [Anisa Prasetya](https://github.com/anisaprsty)           |
+| Alfian Kafilah Ba'its           | 120140109 | Designer                      | [Alfian Kafilah Ba'its](https://github.com/alfiannnas)    |
 
