@@ -34,7 +34,7 @@ Aplikasi ini merupakan permainan yang dibuat menggunakan library Pygame tentang 
 - Pilih tombol Play  
 - Pilih Karakter yang akan digunakan
 - Jika ingin menggunakan karakter Gojo, cara memainkan gamenya yaitu dengan menekan tombol panah atas atau spacebar pada keyboard untuk lompat dan tombol panah bawah untuk menunduk pada keyboard.
-- Jika ingin menggunakan karakter Ptero, cara memainkan gamenya yaitu dengan menekan tombol panah spacebar pada keyboard agar karakter terbang ke atas.
+- Jika ingin menggunakan karakter Ptero, cara memainkan gamenya yaitu dengan menekan tombol spacebar pada keyboard agar karakter terbang ke atas.
 
 ## UML Class Diagram Projek
 
