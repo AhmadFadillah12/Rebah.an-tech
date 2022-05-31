@@ -60,12 +60,12 @@ class Dino (Karakter):
             self.__index =0
 
     def melompat (self):
-        if self.gojo_rect.y >=490:
-            self.gojo_rect.y = 490
         if self.__lompat is True:
             self.__image = self.__dino_lompat[self.__index % 12]
             self.gojo_rect.y -= self.gojo_vel * 5
             self.gojo_vel -= 1
+            if self.gojo_rect.y >=490:
+                self.gojo_rect.y = 490
             if self.gojo_vel < -self.__player_vel:
                 self.__lompat = False
                 self.gojo_vel = self.__player_vel
@@ -75,6 +75,7 @@ class Dino (Karakter):
 
     def menunduk (self):
         if self.__nunduk is True:
+            self.gojo_vel = 11
             self.__image       = self.__dino_nunduk[self.__index % 4]
             self.gojo_rect.y = self.__player_y + 40
             self.__index      += 1
