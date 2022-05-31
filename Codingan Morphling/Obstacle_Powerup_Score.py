@@ -44,7 +44,6 @@ class Rintangan(ABC):
                 obstacles.append(PohonBesar(pohonbesar))
 
 class Obstacle(Rintangan):
-    obstacles = []
     def update(self):
         if evo == True: 
             self.rect.x -= speed
@@ -108,7 +107,7 @@ class Bird(Obstacle):
         self.rect.x = width
         self.rect.y = random.randint(380,500)
 
-class Obstacle_pipa (Rintangan):
+class ObstaclePipa (Rintangan):
     def update(self):
         self.rect.x -= speed
 
@@ -140,6 +139,17 @@ class Obstacle_pipa (Rintangan):
     def draw(self, screen):
         screen.blit(self.image, self.rect)
 
+class Pipa(ObstaclePipa):
+    def __init__(self,image,posisi):
+        self.image = image
+        self.x = 850
+        self.y = 950
+        self.rect = self.image.get_rect()
+        if posisi == 1: 
+            self.rect.bottomleft = (self.x+35,self.y)
+        if posisi == -1:
+            self.rect.topleft = (self.x,0)
+
 class Powerup : 
     def __init__(self):
         self.image = powerup
@@ -148,23 +158,15 @@ class Powerup :
         self.rect.y = 350
 
     def power (self): 
-        self.__draw(screen)
-        self.__update()
+        self.draw(screen)
+        self.update()
      
-    def __draw(self, screen):
+    def draw(self, screen):
         screen.blit(self.image, self.rect)
     
-    def __update(self):
+    def update(self):
         self.rect.x -= speed
 
-class Pipa(Obstacle_pipa):
-    def __init__(self,image,posisi):
-        self.image = image
-        self.rect = self.image.get_rect()
-        if posisi == 1: 
-            self.rect.bottomleft = (885,950)
-        if posisi == -1:
-            self.rect.topleft = (850,0)
 
 class Score:
     def hitung_score(self):
@@ -192,27 +194,6 @@ class Score:
             high_score_file.close()
 
 
-def pause():
-    paused = True
-    clock = pygame.time.Clock()
-    screen.fill((255,255,255))
-    # screen.blit(, (0, 0))
-    # screen.blit("Pause",35, 1100/2, 836/2)
-    # screen.blit("Tekan C Untuk Resume", 20, 1100/2, 836/2+70)
-    # screen.blit("Tekan Q untuk keluar", 20, 1000/2, 836/2+97)
-    pygame.display.update()
-
-    clock.tick(speed)
-    while paused:
-        clock.tick(speed)
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    paused = False
-                elif event.key == pygame.K_ESCAPE:
-                    pygame.quit()
 
 def how_to_play():
     running = True
@@ -354,8 +335,6 @@ def game_dino():
                 running = False
                 pygame.quit()
                 exit()
-            elif user_input[pygame.K_p]:
-                pause()
             
         clock.tick(25)
         score.hitung_score()
@@ -378,7 +357,7 @@ def game_ptero ():
     width = 870
     height = 936
     player = Ptero()
-    obstacle = Obstacle_pipa()
+    obstacle = ObstaclePipa()
     pygame.display.set_mode((width,height))
 
     while running: 
@@ -417,9 +396,6 @@ def game_ptero ():
                 running = False
                 pygame.quit()
                 exit()
-            if user_input[pygame.K_p]:
-                pause()
-
 
 def start (nilai):
     pygame.mixer.music.load('Codingan Morphling/Music/Menu.ogg') 

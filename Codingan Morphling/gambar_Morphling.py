@@ -18,7 +18,7 @@ background_how_to = pygame.image.load('Codingan Morphling/Gambarrr/Background/ho
 background_how_to = pygame.transform.scale(background_how_to,(950,836))
 
 #Background Credits
-background_credits = pygame.image.load('Codingan Morphling/Gambarrr/Background/credits_bg.jpg')
+background_credits = pygame.image.load('Codingan Morphling/Gambarrr/Background/credits_bg.png')
 background_credits = pygame.transform.scale(background_credits,(950,836))
 
 #Gambar Karakter

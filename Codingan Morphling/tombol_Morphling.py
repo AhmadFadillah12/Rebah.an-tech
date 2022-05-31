@@ -8,8 +8,6 @@ class Button:
         self.__height = image.get_height()
         self.__x = x
         self.__y = y
-        self.__x_s = x
-        self.__y_s = y
         self.image = pygame.transform.scale(image, (int(self.__width * scale) , int(self.__height * scale)))
         self.rect = self.image.get_rect(center=(self.__x, self.__y))
         self.clicked = False
@@ -29,9 +27,7 @@ class Button:
                 self.clicked = True
                 action = True
         else:
-            self.__x = self.__x_s
-            self.__y = self.__y_s
-            self.rect = self.image.get_rect(center=(self.__x_s, self.__y_s))
+            self.rect = self.image.get_rect(center=(self.__x, self.__y))
             self.__count = 0
 
         if pygame.mouse.get_pressed()[0] == 0:
