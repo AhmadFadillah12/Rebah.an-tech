@@ -1,12 +1,49 @@
 import pygame
 import random
 
+from abc import ABC, abstractmethod
 from gambar_Morphling   import *
 from tombol_Morphling   import *
 from karakter_Morphling import *
 from gambar_Morphling   import *
 
-class Obstacle:
+class Rintangan(ABC):
+    @abstractmethod
+    def update(self):
+        self.rect.x -= speed
+        if self.rect.x <-self.rect.width:
+            obstacles.pop()
+
+
+    @abstractmethod
+    def draw(self, screen):
+        screen.blit(self.image, self.rect)
+
+    @abstractmethod
+    def buat_rintangan(self):
+        for rintangan in obstacles:
+            rintangan.draw(screen)
+            rintangan.update()
+            if player.ptero_rect.colliderect(rintangan.rect):
+                dead_sound = pygame.mixer.Sound('Music/Mati.ogg') 
+                dead_sound.play()
+                start_ptero(Score.hitung_score(self))
+                
+    @abstractmethod
+    def ganti_rintangan ():
+        if obstacles == []:
+            x = random.randint(0,3)
+            if x == 0:
+                obstacles.append(Pohon(pohon))
+            elif x == 1:
+                x = random.randint(0,1)
+                obstacles.append(Batu(Gambar_Obstacle_Batu,x))
+            elif x == 2:
+                obstacles.append(Bird(bird))
+            elif x == 3:
+                obstacles.append(PohonBesar(pohonbesar))
+
+class Obstacle(Rintangan):
     obstacles = []
     def update(self):
         if evo == True: 
@@ -70,10 +107,11 @@ class Bird(Obstacle):
         self.rect = self.image.get_rect()
         self.rect.x = width
         self.rect.y = random.randint(380,500)
-        
-class Obstacle_pipa ():
+
+class Obstacle_pipa (Rintangan):
     def update(self):
         self.rect.x -= speed
+
     def ganti_rintangan(self):
             x = random.randint(300 , 600)
             pipaa = pygame.transform.scale(pipa, (80, 936 - x - 170))
@@ -95,6 +133,8 @@ class Obstacle_pipa ():
             rintangan.draw(screen)
             rintangan.update()
             if player.ptero_rect.colliderect(rintangan.rect):
+                dead_sound = pygame.mixer.Sound('Music/Mati.ogg') 
+                dead_sound.play()
                 start_ptero(Score.hitung_score(self))
 
     def draw(self, screen):
@@ -108,13 +148,13 @@ class Powerup :
         self.rect.y = 350
 
     def power (self): 
-        self.draw(screen)
-        self.update()
+        self.__draw(screen)
+        self.__update()
      
-    def draw(self, screen):
+    def __draw(self, screen):
         screen.blit(self.image, self.rect)
     
-    def update(self):
+    def __update(self):
         self.rect.x -= speed
 
 class Pipa(Obstacle_pipa):
@@ -285,9 +325,11 @@ def game_dino():
             screen.blit(background, (width+i,0))
             i = 0
         i -= speed
+
         #Menampilkan user dan mengatur gerakannya 
         player1.draw(screen)
         user_input = pygame.key.get_pressed()
+
 
         if poin >= 400  and poin % 500 == 0 or tampilkan_powerup == True  or user_input[pygame.K_9]:
             if evo == False:
@@ -335,7 +377,7 @@ def game_ptero ():
     i = 0
     width = 870
     height = 936
-    player = BurungTerbang()
+    player = Ptero()
     obstacle = Obstacle_pipa()
     pygame.display.set_mode((width,height))
 

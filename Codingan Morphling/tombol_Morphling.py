@@ -4,36 +4,35 @@ from gambar_Morphling import *
 
 class Button: 
     def __init__(self, x , y ,image , scale):
-        self.width = image.get_width()
-        self.height = image.get_height()
-        self.x = x
-        self.y = y
-        self.dino = True
-        self.x_s = x
-        self.y_s = y
-        self.image = pygame.transform.scale(image, (int(self.width * scale) , int(self.height * scale)))
-        self.rect = self.image.get_rect(center=(self.x, self.y))
+        self.__width = image.get_width()
+        self.__height = image.get_height()
+        self.__x = x
+        self.__y = y
+        self.__x_s = x
+        self.__y_s = y
+        self.image = pygame.transform.scale(image, (int(self.__width * scale) , int(self.__height * scale)))
+        self.rect = self.image.get_rect(center=(self.__x, self.__y))
         self.clicked = False
-        self.count=0
+        self.__count=0
 
     def draw(self):
         action = False
         pos = pygame.mouse.get_pos()
         if self.rect.collidepoint(pos):
-            if self.count<3:
-                self.x+=1
-                self.y+=1
-                self.rect = self.image.get_rect(center=(self.x, self.y))
-                self.count+=1
+            if self.__count<3:
+                self.__x+=1
+                self.__y+=1
+                self.rect = self.image.get_rect(center=(self.__x, self.__y))
+                self.__count+=1
             
             if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
                 self.clicked = True
                 action = True
         else:
-            self.x = self.x_s
-            self.y = self.y_s
-            self.rect = self.image.get_rect(center=(self.x_s, self.y_s))
-            self.count = 0
+            self.__x = self.__x_s
+            self.__y = self.__y_s
+            self.rect = self.image.get_rect(center=(self.__x_s, self.__y_s))
+            self.__count = 0
 
         if pygame.mouse.get_pressed()[0] == 0:
             self.clicked = False
