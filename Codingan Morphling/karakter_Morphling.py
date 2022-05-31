@@ -60,6 +60,8 @@ class Dino (Karakter):
             self.__index =0
 
     def melompat (self):
+        if self.gojo_rect.y >=490:
+            self.gojo_rect.y = 490
         if self.__lompat is True:
             self.__image = self.__dino_lompat[self.__index % 12]
             self.gojo_rect.y -= self.gojo_vel * 5
@@ -123,7 +125,7 @@ class Dino (Karakter):
                 self.bergerak()
         
             if (self.__lompat is False and user_input[pygame.K_UP] ) or (self.__lompat is False and user_input[pygame.K_SPACE]) :
-                jump_sound = pygame.mixer.Sound('Music/Jump.ogg') 
+                jump_sound = pygame.mixer.Sound('Codingan Morphling/Music/Jump.ogg') 
                 jump_sound.play()
                 self.__lompat = True
                 self.__nunduk = False
