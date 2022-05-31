@@ -8,18 +8,21 @@ class Karakter (ABC):
     playery = 500
 
     @abstractmethod
+    def draw (self,screen):
+        screen.blit(self.image, self.rect)
+    
+    @abstractmethod
     def bergerak (self):
-       if self.lari is True:
-            self.gojo_rect.y = self.player_y
-            self.image = self.dino_lari[self.index % 8]
+        if self.lari == True:
+            self.image = self.image_lari[self.index % 8]
             self.index += 1
 
     @abstractmethod
-    def update(self,user_input):
+    def update (self,user_input):
         if self.index > 5:
             self.index = 0
         #gravity
-        if self.flap is True:
+        if self.lari is True:
             self.bergerak()
             self.vel += 4
         if self.vel > 12:
@@ -32,15 +35,11 @@ class Karakter (ABC):
         if self.terbangg is False and user_input[pygame.K_SPACE]:
             self.terbangg = True
             self.terbang()
-
-    @abstractmethod
-    def draw (self):
-        screen.blit(self.image,self.rect)	
-
+    
 class Dino (Karakter):
     def __init__(self):
-        self.player_vel = 11
-        self.player_y = 490# batas sementara
+        self.__player_vel = 11
+        self.__player_y = 490
 
         self.image       = Gambar_Dino_Awal
         self.dino_lari   = Gambar_Dino_Lari
@@ -50,100 +49,96 @@ class Dino (Karakter):
         self.gojo_rect   = self.image.get_rect()
         self.gojo_rect.x = self.playerx
         self.gojo_rect.y = self.playery
-        self.gojo_vel    = self.player_vel
+        self.gojo_vel    = self.__player_vel
 
         self.index  = 0
-        self.lompat = False 
-        self.nunduk = False
-        self.lari   = True
+        self.__lompat = False 
+        self.__nunduk = False
+        self.__lari   = True
     
         if self.index == 12:
             self.index =0
 
     def melompat (self):
-        if self.lompat is True:
-            #pygame.mixer.music.load('Gambarrr/Music/Jump.ogg') 
-            #pygame.mixer.music.play()
+        if self.__lompat is True:
             self.image = self.dino_lompat[self.index % 12]
             self.gojo_rect.y -= self.gojo_vel * 5
             self.gojo_vel -= 1
-            if self.gojo_vel < -self.player_vel:
-                self.lompat = False
-                self.gojo_vel = self.player_vel
-                self.gojo_rect.y = self.player_y
+            if self.gojo_vel < -self.__player_vel:
+                self.__lompat = False
+                self.gojo_vel = self.__player_vel
+                self.gojo_rect.y = self.__player_y
             self.index += 1
             
 
     def menunduk (self):
-        if self.nunduk is True:
+        if self.__nunduk is True:
             self.image       = self.dino_nunduk[self.index % 4]
-            self.gojo_rect.y = self.player_y + 40
+            self.gojo_rect.y = self.__player_y + 40
             self.index      += 1
     
     def bergerak(self):
-        if self.lari is True:
-            self.gojo_rect.y = self.player_y
+        if self.__lari is True:
+            self.gojo_rect.y = self.__player_y
             self.image = self.dino_lari[self.index % 8]
             self.index += 1
     
     def melompat_evo (self):
-        if self.lompat is True:
-            # pygame.mixer.music.load('Gambarrr/sound_lompat.mp3') 
-            # pygame.mixer.music.play()
+        if self.__lompat is True:
             self.image = self.dino_lompat_evo[self.index % 12]
             self.gojo_rect.y -= self.gojo_vel * 5
             self.gojo_vel -= 1
-            if self.gojo_vel < -self.player_vel:
-                self.lompat = False
-                self.gojo_vel = self.player_vel
-                self.gojo_rect.y = self.player_y
+            if self.gojo_vel < -self.__player_vel:
+                self.__lompat = False
+                self.gojo_vel = self.__player_vel
+                self.gojo_rect.y = self.__player_y
             self.index += 1
 
     def menunduk_evo (self):
-        if self.nunduk is True:
+        if self.__nunduk is True:
             self.image       = self.dino_nunduk_evo[self.index % 4]
-            self.gojo_rect.y = self.player_y - 10
+            self.gojo_rect.y = self.__player_y - 10
             self.index      += 1
 
     def bergerak_evo(self):
-        if self.lari is True:
-            self.gojo_rect.y = self.player_y
+        if self.__lari is True:
+            self.gojo_rect.y = self.__player_y
             self.image = self.dino_lari_evo[self.index % 8]
             self.index += 1
 
     def update (self, user_input,evo):
         if evo == False:
-            self.player_vel = 11
+            self.__player_vel = 11
             self.gojo_recty = 490
-            self.player_y = self.gojo_recty
+            self.__player_y = self.gojo_recty
 
             if self.index >= 12:
                 self.index =0
     
-            if self.lompat   is True:
+            if self.__lompat   is True:
                 self.melompat()
-            elif self.nunduk is True:
+            elif self.__nunduk is True:
                 self.menunduk()
-            elif self.lari   is True:
+            elif self.__lari   is True:
                 self.bergerak()
         
-            if (self.lompat is False and user_input[pygame.K_UP] ) or (self.lompat is False and user_input[pygame.K_SPACE]) :
+            if (self.__lompat is False and user_input[pygame.K_UP] ) or (self.__lompat is False and user_input[pygame.K_SPACE]) :
                 jump_sound = pygame.mixer.Sound('Music/Jump.ogg') 
                 jump_sound.play()
-                self.lompat = True
-                self.nunduk = False
-                self.lari = False
-            elif (self.nunduk is False and user_input[pygame.K_DOWN]):
-                self.lompat = False
-                self.nunduk = True
-                self.lari = False
-            elif not (self.lompat or user_input[pygame.K_DOWN]):
-                self.nunduk = False
-                self.lari = True
-                self.lompat = False
+                self.__lompat = True
+                self.__nunduk = False
+                self.__lari = False
+            elif (self.__nunduk is False and user_input[pygame.K_DOWN]):
+                self.__lompat = False
+                self.__nunduk = True
+                self.__lari = False
+            elif not (self.__lompat or user_input[pygame.K_DOWN]):
+                self.__nunduk = False
+                self.__lari = True
+                self.__lompat = False
         elif evo == True:
-            self.player_vel = 11
-            self.player_y = 360
+            self.__player_vel = 11
+            self.__player_y = 360
             self.dino_lari_evo   = Gambar_Dino_Lari_evo
             self.dino_lompat_evo = Gambar_Dino_Melompat_evo
             self.dino_nunduk_evo = Gambar_Dino_Nunduk_evo
@@ -151,25 +146,25 @@ class Dino (Karakter):
             if self.index >= 12:
                 self.index =0
     
-            if self.lompat   is True:
+            if self.__lompat   is True:
                 self.melompat_evo()
-            elif self.nunduk is True:
+            elif self.__nunduk is True:
                 self.menunduk_evo()
             elif self.lari   is True:
                 self.bergerak_evo()
         
-            if (self.lompat is False and user_input[pygame.K_UP] ) or (self.lompat is False and user_input[pygame.K_SPACE]) :
-                self.lompat = True
-                self.nunduk = False
+            if (self.__lompat is False and user_input[pygame.K_UP] ) or (self.__lompat is False and user_input[pygame.K_SPACE]) :
+                self.__lompat = True
+                self.__nunduk = False
                 self.lari = False
-            elif (self.nunduk is False and user_input[pygame.K_DOWN]):
-                self.lompat = False
-                self.nunduk = True
+            elif (self.__nunduk is False and user_input[pygame.K_DOWN]):
+                self.__lompat = False
+                self.__nunduk = True
                 self.lari = False
-            elif not (self.lompat or user_input[pygame.K_DOWN]):
-                self.nunduk = False
+            elif not (self.__lompat or user_input[pygame.K_DOWN]):
+                self.__nunduk = False
                 self.lari = True
-                self.lompat = False
+                self.__lompat = False
 
     def draw (self,screen):
         screen.blit(self.image, self.gojo_rect)

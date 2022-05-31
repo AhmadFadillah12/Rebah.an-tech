@@ -70,6 +70,7 @@ class Bird(Obstacle):
         self.rect = self.image.get_rect()
         self.rect.x = width
         self.rect.y = random.randint(380,500)
+        
 class Obstacle_pipa ():
     def update(self):
         self.rect.x -= speed
@@ -284,11 +285,9 @@ def game_dino():
             screen.blit(background, (width+i,0))
             i = 0
         i -= speed
-
         #Menampilkan user dan mengatur gerakannya 
         player1.draw(screen)
         user_input = pygame.key.get_pressed()
-
 
         if poin >= 400  and poin % 500 == 0 or tampilkan_powerup == True  or user_input[pygame.K_9]:
             if evo == False:
