@@ -19,8 +19,9 @@
 
 
 ## Screenshots
+<p align = 'center'>
 <img alt="menu" src="https://user-images.githubusercontent.com/99014018/171454822-42d699d2-0f7d-4f59-b60e-a895c9c159b0.png"  width="300">
-
+</p>
 ## Deskripsi Projek
 <p align="justify">
 Aplikasi ini merupakan permainan yang dibuat menggunakan library Pygame tentang dua ekor dinosaurus bernama Gojo (Dinosaurus Hijau) dan Pterodactyl (Burung Dinosaurus). Tujuan dari permainan ini adalah mendapatkan score sebanyak-banyaknya dengan cara menghindari rintangan. Untuk memulai permainan, user dapat memilih salah satu karakter di atas dan setiap karakter mempunyai stage dan rintangan yang berbeda. Pada pemilihan karakter Gojo (Dinosaurus Hijau), karakter tersebut harus menghindari rintangan berupa Batu, Love Bird, dan Pohon yang ditampilkan secara random dengan cara melompat dan menunduk agar tidak mati dengan cepat (Game Over). Kemudian, seiring berjalannya score, karakter Gojo ini akan berevolusi menjadi lebih besar dari ukuran semula dan ketika menyentuh score tertentu karakter Gojo akan kembali ke bentuk awal. Permainan akan berakhir apabila karakter menabrak rintangan. Selanjutnya, pada pemilihan karakter Pterodactyl (Burung Dinosaurus), karakter tersebut harus menghindari rintangan berupa Pipa yang terbentuk secara vertikal pada bagian atas dan bawah. Karakter tersebut harus melewati celah di antara kedua pipa yang terbentuk dengan melakukan gerak terbang. Permainan akan berakhir apabila karakter menabrak rintangan (Game Over).
