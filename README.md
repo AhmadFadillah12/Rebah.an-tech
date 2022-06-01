@@ -20,7 +20,7 @@
 
 ## Screenshots
 <p align = 'center'>
-<img alt="menu" src="https://user-images.githubusercontent.com/99014018/171454822-42d699d2-0f7d-4f59-b60e-a895c9c159b0.png"  width="400">
+<img alt="menu" src="https://user-images.githubusercontent.com/99014018/171454822-42d699d2-0f7d-4f59-b60e-a895c9c159b0.png"  width="450">
 <img alt="pilih karakter" src="https://user-images.githubusercontent.com/99014018/171454852-0f6655cf-1876-44f9-a5e3-2159e108e035.png"  width="450">
 <img alt="dino play" src="https://user-images.githubusercontent.com/99014018/171454857-825e7985-3be7-4c58-9154-37169fd705fe.png"  width="450" height = "366">
 <img alt="dino gameover" src="https://user-images.githubusercontent.com/99014018/171454868-217e3d73-106e-42b1-8ccc-660fe06d404e.png"  width="450">
