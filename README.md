@@ -37,6 +37,10 @@ Aplikasi ini merupakan permainan yang dibuat menggunakan library Pygame tentang 
 - Jika ingin menggunakan karakter Ptero, cara memainkan gamenya yaitu dengan menekan tombol spacebar pada keyboard agar karakter terbang ke atas.
 
 ## UML Class Diagram Projek
+UML Class Diagram dapat dilihat pada gambar sebagai berikut:
+<p align="center">
+<img alt="UML Diagram" src="https://user-images.githubusercontent.com/64588557/171326379-8eb65fa9-4bd2-4427-9cbe-d5deca0e4648.jpeg" width="500">
+
 
 ## Kontributor Pengembangan Aplikasi
 RA-10
