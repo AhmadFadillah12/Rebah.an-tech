@@ -19,6 +19,7 @@
 
 
 ## Screenshots
+<img alt="menu" src="<img alt="menu tanpa tombol" src="https://user-images.githubusercontent.com/100473334/170396076-1fad50af-a235-4fcf-816b-e4698ba7d379.png" width="300">" width="300">
 
 ## Deskripsi Projek
 <p align="justify">
