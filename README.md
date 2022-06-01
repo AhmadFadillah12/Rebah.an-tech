@@ -20,7 +20,7 @@
 
 ## Screenshots
 <p align = 'center'>
-<img alt="menu" src="https://user-images.githubusercontent.com/99014018/171454822-42d699d2-0f7d-4f59-b60e-a895c9c159b0.png"  width="300">
+<img alt="menu" src="https://user-images.githubusercontent.com/99014018/171454822-42d699d2-0f7d-4f59-b60e-a895c9c159b0.png"  width="400">
 </p>
 ## Deskripsi Projek
 <p align="justify">
