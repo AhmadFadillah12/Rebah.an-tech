@@ -19,7 +19,7 @@
 
 
 ## Screenshots
-<img alt="menu" src="https://user-images.githubusercontent.com/100473334/170396076-1fad50af-a235-4fcf-816b-e4698ba7d379.png" width="300">" width="300">
+<img alt="menu" src="https://user-images.githubusercontent.com/99014018/171454822-42d699d2-0f7d-4f59-b60e-a895c9c159b0.png"  width="300">
 
 ## Deskripsi Projek
 <p align="justify">
