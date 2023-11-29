@@ -193,12 +193,11 @@ class Score:
             high_score_file.write(str(new_high_score))
             high_score_file.close()
 
-
+screen = pygame.display.set_mode((950, 836))
 
 def how_to_play():
     running = True
     while running: 
-        pygame.display.set_mode((950,836))
         screen.fill((255,255,255))
         screen.blit(background_how_to,(0,0))
 
@@ -215,7 +214,6 @@ def how_to_play():
 def credits():
     running = True
     while running: 
-        pygame.display.set_mode((950,836))
         screen.fill((255,255,255))
         screen.blit(background_credits,(0,0))
 
@@ -233,7 +231,6 @@ def credits():
 def start_ptero(nilai):
     running = True
     while running:  
-        pygame.display.set_mode((950,836))
         screen.fill((255,255,255))
         screen.blit(gameover_ptero,(0,0))
         if button_gameover_ptero.draw():
@@ -312,7 +309,7 @@ def game_dino():
         user_input = pygame.key.get_pressed()
 
 
-        if poin >= 400  and poin % 500 == 0 or tampilkan_powerup == True  or user_input[pygame.K_9]:
+        if poin >= 100 or tampilkan_powerup == True  or user_input[pygame.K_9]:
             if evo == False:
                 tampilkan_powerup = True
                 power_up.power()
@@ -396,6 +393,7 @@ def game_ptero ():
                 running = False
                 pygame.quit()
                 exit()
+                
 
 def start (nilai):
     pygame.mixer.music.load('Codingan Morphling/Music/Menu.ogg') 
@@ -403,7 +401,6 @@ def start (nilai):
     if nilai == 0: 
         running = True
         while running: 
-            pygame.display.set_mode((950,836))
             screen.fill((255,255,255))
             screen.blit(background_menu,(0,0))
             if start_button.draw():
@@ -433,7 +430,6 @@ def start (nilai):
     else: 
         running = True
         while running: 
-            pygame.display.set_mode((950,836))
             screen.blit(gameover,(0,0))
             if button_gameover.draw():
                 pilih_karakter()
